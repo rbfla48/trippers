@@ -118,7 +118,7 @@
         <div class="rectangle-5"></div>
       </div>
       <!--하단기업정보/-->
-      <img class="user" src="https://c.animaapp.com/IWpl16yO/img/user.svg" />
+      <img class="user" src="https://c.animaapp.com/IWpl16yO/img/user.svg" onclick="location.href='login'" style="cursor: pointer"/>
       <img class="search" src="https://c.animaapp.com/IWpl16yO/img/search.svg" />
     </div>
   </div>
