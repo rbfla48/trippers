@@ -28,11 +28,11 @@
     padding: 0 20px;
 	}
 	.event-size{
-		max-width: 1068px;
+		max-width: 1064px;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 20px;
 	}
-
+/* 하당 슬라이드 스타일 */
 	.swiper {
 		width: 100%;
 		height: 100%;
@@ -53,30 +53,45 @@
 		height: 100%;
 		object-fit: cover;
 	}
+	/* 슬라이드 페이지네이션 위치 */
 	.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
 		top: 0 !important;
     right: 0 !important;
-    width: 48px;
+    width: 80px;
     text-align: end !important;
     left: auto;
 	}
+	/* 슬라이드 페이지네이션 커스텀 */
+	.swiper-pagination-bullet{
+		width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 15px));
+    height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 15px));
+    display: inline-block;
+    border-radius: var(--swiper-pagination-bullet-border-radius, 50%);
+    background: #ffffff;
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
+    border: 3px solid #F4BC1B;
+	}
+	.swiper-pagination-bullet-active{
+		background: #F4BC1B;
+	}
+	
 </style>
 <body>
 	<!-- 공통헤더 -->
 	<section id="header"></section>
 
 	<!-- 로고 -->
-	<section class="text-center" style="margin-top: 72px;">
+	<section class="text-center" style="padding-top: 72px;">
 		<img src="img/logo.svg" class="logo-size">
 	</section>
 
 	<!-- 타이틀 -->
-	<section class="text-center" style="margin-top: 72px;">
+	<section class="text-center" style="padding-top: 72px;">
 		<img src="img/title.svg" class="title-size">
 	</section>
 
 	<!-- 달력 -->
-  <section class="content" style="margin-top: 105px;">
+  <section class="content" style="padding: 100px 0;">
     <div class="container-fluid">
       <div class="row">
         <div class="col">
@@ -89,35 +104,67 @@
       </div>
     </div>
   </section>
+	
+	<div style="background-color: #FBFBFB; padding: 100px 0;">
+		<!-- 이달의 행사 -->
+		<section class="text-center">
+			<img src="img/month-event.svg" class="event-size">
+		</section>
 
-	<!-- 이달의 이벤트 -->
-	<section class="text-center" style="margin-top: 100px;">
-		<img src="img/month-event.svg" class="event-size">
-	</section>
+		<!-- 이달의 행사 카드 -->
+		<section class="px-2" style="margin-top: 100px;">
+			<div class="mx-auto d-flex justify-content-between flex-wrap" style="max-width: 1024px;">
+				<div class="card border-0 pointer" style="width: 454px;" onclick="window.location.href='#';">
+					<img src="img/eximg.png" class="card-img-top p-2" alt="...">
+					<div class="card-body text-center px-5 pt-2">
+						<img src="img/on.svg" style="padding-bottom: 16px;">
+						<h4 class="card-title fw-bold">낭만과 미식의 공간</h5>
+						<p class="card-text">레스쁘아 뒤 이브(L'Espoir du Hibou)는 서울 청담동에 위치한 정통 프렌치 레스토랑이야. 프랑스 현지의 비스트로 느낌을 완벽히 재현한</p>
+						<div class="d-flex flex-wrap justify-content-center" style="gap: 6px;">
+							<span class="badge text-bg-secondary fs-6">청담</span>
+							<span class="badge text-bg-secondary fs-6">레스쁘아</span>
+							<span class="badge text-bg-secondary fs-6">레스토랑</span>
+						</div>
+					</div>
+				</div>
+				<div class="card border-0 pointer" style="width: 454px;">
+					<img src="img/eximg.png" class="card-img-top p-2" alt="...">
+					<div class="card-body text-center px-5 pt-2" onclick="window.location.href='#';">
+						<img src="img/off.svg" style="padding-bottom: 16px;">
+						<h4 class="card-title fw-bold">낭만과 미식의 공간</h4>
+						<p class="card-text">레스쁘아 뒤 이브(L'Espoir du Hibou)는 서울 청담동에 위치한 정통 프렌치 레스토랑이야. 프랑스 현지의 비스트로 느낌을 완벽히 재현한</p>
+						<span class="badge text-bg-secondary fs-6">청담</span>
+						<span class="badge text-bg-secondary fs-6">레스쁘아</span>
+						<span class="badge text-bg-secondary fs-6">레스토랑</span>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 
-	<!-- 이달의 안내 -->
-	<section class="text-center" style="margin-top: 200px;">
-		<img src="img/popup-event.svg" class="event-size">
-	</section>
+	<div style="padding: 100px 0;">
+		<!-- 이벤트 안내 -->
+		<section class="text-center">
+			<img src="img/popup-event.svg" class="event-size">
+		</section>
 
-	<!-- 하단 이벤트 배너 -->
-	<div class="swiper mySwiper" style="width: 1420px; padding: 40px 0; margin-top: 100px;">
-		<div class="swiper-pagination"></div>
-    <div class="swiper-wrapper">
-      <div class="swiper-slide pointer">
-				<img src="img/namhae01.svg" onclick="window.location.href='#';">
+		<!-- 하단 이벤트 안내 배너 -->
+		<section class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 100px;">
+			<div class="swiper-pagination"></div>
+			<div class="swiper-wrapper">
+				<div class="swiper-slide pointer">
+					<img src="img/namhae01.svg" onclick="window.location.href='#';">
+				</div>
+				<div class="swiper-slide pointer">
+					<img src="img/namhae02.svg" onclick="window.location.href='#';">
+				</div>
+				<div class="swiper-slide pointer">
+					<img src="img/namhae03.svg" onclick="window.location.href='#';">
+				</div>
 			</div>
-      <div class="swiper-slide pointer">
-				<img src="img/namhae02.svg" onclick="window.location.href='#';">
-			</div>
-      <div class="swiper-slide pointer">
-				<img src="img/namhae03.svg" onclick="window.location.href='#';">
-			</div>
-    </div>
-    <!-- <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div> -->
-    
-  </div>
+		</section>
+	</div>
+
 	<!-- 공통푸터 -->
 	<section id="footer"></section>
 </body>
@@ -129,6 +176,7 @@
 		$("#header").load("common/header.html");
 		$("#footer").load("common/footer.html");
 	})
+
 	// 달력 한글화
   document.addEventListener('DOMContentLoaded', function(){
     var calendarEl = document.getElementById('calendar');
@@ -137,7 +185,6 @@
     });
     calendar.render();
   })
-
   document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
 		var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -159,12 +206,15 @@
 		});
 		calendar.render();
 	});
+
 	// 하단 스와이퍼
 	var swiper = new Swiper(".mySwiper", {
+		slidesPerView: 1,
 		spaceBetween: 30,
-		centeredSlides: true,
+		loop: true,
+		// centeredSlides: true,
 		autoplay: {
-			delay: 5000,
+			delay: 8000,
 			disableOnInteraction: false,
 		},
 		pagination: {
