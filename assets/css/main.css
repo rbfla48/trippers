@@ -1,0 +1,252 @@
+/*FIND아이템 응모 모달(사용X)*/
+.find-item-area{
+    width: 100%;
+    margin-top: 20vw;
+}
+
+.find-item-content-area {
+    display: flex;
+    width: 100%;
+    height: 45vw;
+    background-color: #F5F5F5;
+}
+
+.find-item-img-area {
+    width: 50%;
+    height: 100%;
+}
+
+.swiper-find-item-detail-slide img {
+    object-fit: cover; /* 이미지가 꽉 차도록 설정, 비율 유지하며 넘치는 부분은 자름 */
+    width: 100%;
+    height: 100%;
+}
+
+.find-item-text-area {
+    width: auto;
+    margin-left: 5%;
+}
+
+.find-item-title {
+    position: relative; /* 밑줄을 위한 상대 위치 지정 */
+    display: inline-block; /* 텍스트 길이에 맞게 밑줄 적용 */
+    padding-bottom: 5px; /* 밑줄과 텍스트 간격 조정 */
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.find-item-title::after {
+    content: ""; /* 가상 요소 생성 */
+    display: block;
+    width: 100%; /* 밑줄의 길이 */
+    height: 4px; /* 밑줄의 두께 */
+    background-color: black; /* 밑줄 색상 */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.find_item_text > h5 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 2;
+}
+
+.find_item_text > ul {
+    font-size: 1.0rem;
+    text-align: left;
+}
+
+.swiper-find-item-detail .swiper-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300vw;
+}
+
+.swiper-wrapper{
+    /* height: 100vh; */
+    min-height: 700px;
+    max-height: 900px;
+}
+
+.creator-swiper, .dongnae-swiper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-height:70vw;
+}
+
+/* Swiper 카드 슬라이드 스타일 */
+.swiper-slide {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* 카드 가운데 정렬 */
+    align-items:start; /* 카드 가운데 정렬 */
+    padding: 10px; /* 카드 간격 조정 */
+}
+
+.centered-text-find-item-container {
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center; /* 세로 방향 중앙 정렬 */
+    width: 100%;
+    height: 100px; /* 높이 조정 */
+    position: relative; /* 부모 컨테이너에서 상대 위치 설정 */
+}
+
+.centered-text-find-item {
+    margin: 0 auto;
+    text-align: center; /* 텍스트를 화면 중앙에 위치 */
+    position: relative; /* 밑줄을 위한 상대 위치 지정 */
+    display: inline-block; /* 텍스트 길이에 맞게 밑줄 적용 */
+    padding-bottom: 5px; /* 밑줄과 텍스트 간격 조정 */
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.centered-text-find-item::after {
+    content: ""; /* 가상 요소 생성 */
+    display: block;
+    width: 100%; /* 밑줄의 길이 */
+    height: 4px; /* 밑줄의 두께 */
+    background-color: black; /* 밑줄 색상 */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.finditem-btn {
+    background-color: #000;
+    width: 50%;
+    height: auto;
+    border-radius: 0%;
+    color: #fff;
+    margin-top: 3%;
+    font-weight: bold;
+}
+
+.finditem-btn:hover {
+    background-color: #F36523;
+}
+
+.creator-pagination, .dongnae-pagination {
+    position: absolute;
+    bottom: 5px; /* Adjust this value to move pagination up or down */
+    left: 0;
+    right: 0;
+    z-index: 10; /* Ensure pagination is above slides */
+    display: flex;
+    justify-content: center; /* Center pagination */
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #F36523; /* 주황색 (#ff5722)으로 변경 */
+    opacity: 1; /* 활성화된 요소는 불투명하게 */
+}
+
+
+@media (max-width: 768px) {
+    .creator-swiper, .dongnae-swiper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        max-height:200vw;
+    }
+
+    .find-item-content-area {
+        display: block;
+        width: 100%;
+        min-height: 200vw;
+        background-color: #E2E2E2;
+    }
+
+    .swiper-find-item-detail .swiper-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+
+    .find-item-img-area {
+        width: 100%;
+        height: auto;
+    }
+    
+    .find-item-img-area > img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .find-item-text-area {
+        margin-left: 0;
+    }
+
+    .find-item-title {
+        /* width: 45%;
+        height: 20%;
+        margin: 0 auto;
+        font-size: 2rem;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20vw;
+        border-bottom: solid 2px #000;
+        margin-bottom: 10vw; */
+        font-size: 1.2rem;
+    }
+
+    .centered-text-find-item {
+        font-size: 1.2rem;
+    }
+
+    .find_item_text > h5{
+        font-size: 1.0rem;
+        font-weight: bold;
+        line-height: 2;
+    }
+    
+    .find_item_text > ul {
+        font-size: 0.9rem;
+        text-align: left;
+        line-height: 2;
+    }
+
+    .finditem-btn {
+        background-color: #000;
+        width: 90%;
+        height: 7%;
+        border-radius: 0%;
+        color: #fff;
+        margin-top: 10vw;
+    }
+}
+
+/* FINDITEM 모달 스타일 */
+.find-item-img-area > img{
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-find-item-detail-slide {
+    height: 100%;
+}
+
+.modal-body {
+    margin-top: 20px;
+}
+
+.close-btn {
+    z-index: 10;
+    cursor: pointer;
+    width: 30px;
+    font-size: 30px;
+}
+
+@media (max-width: 768px) {
+    .modal-body {
+        margin-top: 40px;
+    }
+}

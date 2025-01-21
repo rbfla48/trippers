@@ -1,0 +1,48 @@
+.w-95 {
+  width: 95% !important;
+}
+
+/*footer 영역*/
+footer {
+  margin-top: 10vw;
+}
+
+.footer-info-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-info {
+  font-size : 1.0rem;
+}
+
+.footer-link {
+  width: 30%;
+}
+
+.footer-link a{
+  font-size : 0.8rem;
+  font-weight: bold;
+  margin: 0 1% 2% 0;
+}
+
+@media (max-width: 768px) {
+  .footer-info-area {
+    display: block;
+  }
+
+  .footer-info {
+    font-size : 0.6rem;
+    text-align: center;
+  }
+
+  .footer-link {
+    width: 100%;
+  }
+
+  .footer-link a {
+    font-size : 0.7rem;
+    margin: 0 1% 2% 0;
+  }
+}
