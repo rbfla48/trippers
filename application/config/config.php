@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://trippers.me';
-//$config['base_url'] = 'http://localhost';
+//$config['base_url'] = 'https://trippers.me';
+$config['base_url'] = 'http://localhost/';
 
 /*
 |--------------------------------------------------------------------------
@@ -523,6 +523,7 @@ $config['goods_upload_path'] = '/images/goods/';
 $config['etc_upload_path'] = '/images/etc/';
 $config['find_item_upload_path'] = '/images/find_item/';
 $config['place_upload_path'] = '/images/place/';
+$config['event_upload_path'] = '/images/event/';
 
 //배너분류
 $config['banner_category']['MT'] = "메인페이지 상단";

@@ -43,6 +43,12 @@ if (!function_exists('place_upload_path')) {
         return $CI->config->item('place_upload_path');
     }
 }
+if (!function_exists('event_upload_path')) {
+    function get_event_upload_path() {
+        $CI =& get_instance();
+        return $CI->config->item('event_upload_path');
+    }
+}
 
 //정렬순서 업데이트
 function update_sort($table, $id, $sort)
