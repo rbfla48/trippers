@@ -134,6 +134,39 @@
 	.fc-daygrid-day-events{
 		text-align: center;
 	}
+	.fc-prev-button{
+		background-image: url(img/month-left.svg);
+    position: absolute;
+    right: 100px;
+    top: -16px;
+    height: 57px;
+    width: 50px;
+    background-repeat: no-repeat;
+    border: 0;
+    background-color: transparent !important;
+		border-color: transparent !important;
+	}
+	.fc-next-button{
+		background-image: url(img/month-right.svg);
+    position: absolute;
+    right: 0px;
+    top: -16px;
+    height: 57px;
+    width: 50px;
+    background-repeat: no-repeat;
+    border: 0;
+    background-color: transparent !important;
+		border-color: transparent !important;
+	}
+	.fc-icon.fc-icon-chevron-right,
+	.fc-icon.fc-icon-chevron-left{
+		display: none;
+	}
+
+  .fc-next-button:focus,
+	.fc-prev-button:focus {
+      box-shadow: none !important; /* 그림자 제거 */
+  }
 </style>
 <body>
 	<!-- 공통헤더 -->
@@ -363,5 +396,6 @@
 			}
     });
 	});
+	
 </script>
 </html>
