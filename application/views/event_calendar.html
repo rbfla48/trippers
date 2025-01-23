@@ -91,8 +91,7 @@
 	th div a{
 		color: unset;
 		text-decoration: none;
-		/* font-size: 30px; */
-		font-size: calc(1.3rem + 0.6vw) !important;
+		font-size: 30px;
 	}
 	td div div a{
 		font-weight: bold;
@@ -127,18 +126,10 @@
 		/* background-image: url('img/month-right.svg'); */
 	}
 	.month-text{
-		/* position: absolute;
+		position: absolute;
 		width: 100%;
 		top: -370px;
-		left: 0px; */
-		display: flex;
-    width: 100%;
-	}
-	.fc .fc-toolbar.fc-header-toolbar{
-		margin-bottom: -57px !important;
-		position: relative;
-    right: 0;
-    top: -57px;
+		left: 0px;
 	}
 	.fc-daygrid-day-events{
 		text-align: center;
@@ -146,7 +137,7 @@
 	.fc-prev-button{
 		background-image: url(img/month-left.svg);
     position: absolute;
-    right: 40px;
+    right: 100px;
     top: -16px;
     height: 57px;
     width: 50px;
@@ -166,32 +157,6 @@
     border: 0;
     background-color: transparent !important;
 		border-color: transparent !important;
-	}
-	@media (max-width: 768px) {
-		.fc-prev-button{
-			background-image: url(img/month-left-m.svg);
-			top: 0px;
-			right: 0px;
-		}
-		.fc-next-button{
-			background-image: url(img/month-right-m.svg);
-			top: 0px;
-			right: 0px;
-			background-position-x: right;
-		}
-	}
-	@media (max-width: 425px) {
-		.fc-prev-button{
-			background-image: url(img/month-left-s.svg);
-			top: 20px;
-			right: 0px;
-			background-position-x: right;
-		}
-		.fc-next-button{
-			background-image: url(img/month-right-s.svg);
-			top: 20px;
-			right: 0px;
-		}
 	}
 	.fc-icon.fc-icon-chevron-right,
 	.fc-icon.fc-icon-chevron-left{
@@ -213,19 +178,19 @@
 	</section>
 
 	<!-- 타이틀 -->
-	<section class="text-center" style="padding: 70px; 0 100px 0">
+	<section class="text-center" style="padding-top: 70px;">
 		<img src="img/title.svg" class="title-size">
 	</section>
 
 	<!-- 달력 -->
-  <section class="content" style="padding: 0 0 70px 0;">
+  <section class="content" style="padding: 500px 0 70px 0;">
     <div class="container-fluid">
       <div class="row">
         <div class="col">
 					<div class="card card-primary border-0 mx-auto" style="max-width: 1028px;">
 						<!-- <img src="img/1month-img.svg" class="" style=""> -->
 						<div class="card-body p-0">
-							<img src="img/calender-box.svg" class="w-100 position-absolute">
+							<img src="img/calender-box.svg" class="w-100 position-absolute" style="top:64px">
               <div id="calendar"></div>
 							<img src="img/2025-namhae-calendar.svg" class="w-100 mt-5">
             </div>

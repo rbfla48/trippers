@@ -1,4 +1,3 @@
-<?php
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,7 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.css">
 <link rel="stylesheet" href="assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.js">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- swiper -->
 <link rel="stylesheet" href="assets/js/swiper/package/swiper-bundle.min.css">
 <script src="assets/js/swiper/package/swiper-bundle.min.js"></script>
@@ -92,7 +92,8 @@
 	th div a{
 		color: unset;
 		text-decoration: none;
-		font-size: 30px;
+		/* font-size: 30px; */
+		font-size: calc(1.3rem + 0.6vw) !important;
 	}
 	td div div a{
 		font-weight: bold;
@@ -124,13 +125,21 @@
     margin: 0 auto;
 	}
 	.fc-next-button{
-		/* background-image: url('img/month-right.svg'); */
+		/* background-image: url('assets/img/month-right.svg'); */
 	}
 	.month-text{
-		position: absolute;
+		/* position: absolute;
 		width: 100%;
 		top: -370px;
-		left: 0px;
+		left: 0px; */
+		display: flex;
+    width: 100%;
+	}
+	.fc .fc-toolbar.fc-header-toolbar{
+		margin-bottom: -57px !important;
+		position: relative;
+    right: 0;
+    top: -57px;
 	}
 	.fc-daygrid-day-events{
 		text-align: center;
@@ -138,7 +147,7 @@
 	.fc-prev-button{
 		background-image: url(assets/img/month-left.svg);
     position: absolute;
-    right: 60px;
+    right: 40px;
     top: -16px;
     height: 57px;
     width: 50px;
@@ -159,6 +168,43 @@
     background-color: transparent !important;
 		border-color: transparent !important;
 	}
+	@media (max-width: 768px) {
+		.fc-prev-button{
+			background-image: url(assets/img/month-left-m.svg);
+			top: 0px;
+			right: 0px;
+		}
+		.fc-next-button{
+			background-image: url(assets/img/month-right-m.svg);
+			top: 0px;
+			right: 0px;
+			background-position-x: right;
+		}
+		td div div a,
+		th div a{
+			font-size: 1.25rem !important;
+		}
+	}
+	@media (max-width: 425px) {
+		.fc-prev-button{
+			background-image: url(assets/img/month-left-s.svg);
+			top: 20px;
+			right: 0px;
+			background-position-x: right;
+		}
+		.fc-next-button{
+			background-image: url(assets/img/month-right-s.svg);
+			top: 20px;
+			right: 0px;
+		}
+		td div div a,
+		th div a{
+			font-size: 12px !important;
+		}
+		th div a{
+			padding: 14px 0 !important;
+		}
+	}
 	.fc-icon.fc-icon-chevron-right,
 	.fc-icon.fc-icon-chevron-left{
 		display: none;
@@ -171,27 +217,29 @@
 </style>
 <body>
 	<!-- 공통헤더 -->
-	<section id="header"></section>
-
+	<!-- <section id="header"></section> -->
+	<section>
+  	<?php include("common/header.php")?>
+	</section>
 	<!-- 로고 -->
 	<section class="text-center" style="padding-top: 70px;">
 		<img src="assets/img/logo.svg" class="logo-size">
 	</section>
 
 	<!-- 타이틀 -->
-	<section class="text-center" style="padding-top: 70px;">
+	<section class="text-center" style="padding: 70px; 0 100px 0">
 		<img src="assets/img/title.svg" class="title-size">
 	</section>
 
 	<!-- 달력 -->
-  <section class="content" style="padding: 500px 0 70px 0;">
+  <section class="content" style="padding: 0 0 70px 0;">
     <div class="container-fluid">
       <div class="row">
         <div class="col">
 					<div class="card card-primary border-0 mx-auto" style="max-width: 1028px;">
 						<!-- <img src="assets/img/1month-img.svg" class="" style=""> -->
 						<div class="card-body p-0">
-							<img src="assets/img/calender-box.svg" class="w-100 position-absolute" style="top:64px">
+							<img src="assets/img/calender-box.svg" class="w-100 position-absolute">
               <div id="calendar"></div>
 							<img src="assets/img/2025-namhae-calendar.svg" class="w-100 mt-5">
             </div>
@@ -200,18 +248,17 @@
       </div>
     </div>
   </section>
-
+	
 	<div style="background-color: #FBFBFB; padding: 70px 0;">
 		<!-- 이달의 행사 -->
 		<section id="month-event" class="text-center">
 			<img src="assets/img/month-event.svg" class="event-size">
 		</section>
 
-
 		<!-- 이달의 행사 카드 -->
 		<section class="px-2" style="margin-top: 70px;">
-            <?php foreach($events as $list){?>
 			<div class="mx-auto d-flex justify-content-between flex-wrap" style="max-width: 1024px;">
+				<?php foreach($events as $list): ?>
 				<div class="card border-0 pointer" style="width: 454px;" onclick="window.location.href='#';">
 					<img src="assets/img/eximg.png" class="card-img-top p-2" alt="...">
 					<div class="card-body text-center px-5 pt-2">
@@ -219,20 +266,30 @@
 						<h4 class="card-title fw-bold"><?= $list['title'] ?></h5>
 						<p class="card-text"><?= $list['content_sub'] ?></p>
 						<div class="d-flex flex-wrap justify-content-center" style="gap: 6px;">
-                            <?php
-                            $tags = explode("#", $list['tag']);
-                            for($i = 1; $i < count($tags); $i++):
-                            ?>
-                                <span class="badge text-bg-secondary fs-6"><?= $tags[$i]; ?></span>
-                            <?php endfor; ?>
+						<?php 
+							$tags = explode("#", $list['tag']);
+							for($i = 1; $i < count($tags); $i++): 
+						?>
+						<span class="badge text-bg-secondary fs-6"><?= $tags[$i] ?></span>
+						<?php endfor; ?>
 						</div>
 					</div>
 				</div>
+				<?php endforeach ?>
+				<!-- <div class="card border-0 pointer" style="width: 454px;" onclick="window.location.href='#';">
+					<img src="assets/img/eximg.png" class="card-img-top p-2" alt="...">
+					<div class="card-body text-center px-5 pt-2">
+						<img src="assets/img/off.svg" style="padding-bottom: 16px;">
+						<h4 class="card-title fw-bold">낭만과 미식의 공간</h4>
+						<p class="card-text">레스쁘아 뒤 이브(L'Espoir du Hibou)는 서울 청담동에 위치한 정통 프렌치 레스토랑이야. 프랑스 현지의 비스트로 느낌을 완벽히 재현한</p>
+						<span class="badge text-bg-secondary fs-6">청담</span>
+						<span class="badge text-bg-secondary fs-6">레스쁘아</span>
+						<span class="badge text-bg-secondary fs-6">레스토랑</span>
+					</div>
+				</div> -->
 			</div>
-            <?php } ?>
 		</section>
 	</div>
-    <!-- //이달의 행사 카드 -->
 
 	<div style="padding: 70px 0;">
 		<!-- 이벤트 안내 -->
@@ -258,21 +315,13 @@
 	</div>
 
 	<!-- 공통푸터 -->
-	<section id="footer"></section>
+	<!-- <section id="footer"></section> -->
+	<?php include("common/footer.php")?>
 </body>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    //행사일정 날짜리스트
-    var eventDays = JSON.parse('<?= $event_dates; ?>');
-    //행사 날짜범위
-    var eventRanges = JSON.parse('<?= $event_ranges; ?>');
-
-	// 공통영역 불러오기
-	$(function(){
-		$("#header").load("common/header.html");
-		$("#footer").load("common/footer.html");
-	})
+	//달력 아이콘노출날짜 리스트
+	var eventDays = JSON.parse('<?= $event_dates ?>');
 
 	document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
@@ -317,17 +366,6 @@
 						dayNumber.parentNode.appendChild(checkIcon);
 					}
 				}
-
-                let isEventDay = false;
-
-                // 모든 이벤트 범위를 검사하여 해당 날짜가 포함되어 있는지 확인
-                eventRanges.forEach(function(event) {
-                    if (tileDate >= event.start_date && tileDate <= event.end_date) {
-                        isEventDay = true;
-                    }
-                });
-
-
 			},
 			dateClick: function (info) {
 				// 클릭된 날짜의 셀을 가져오기
@@ -409,6 +447,6 @@
 			}
     });
 	});
-
+	
 </script>
 </html>
