@@ -21,7 +21,7 @@ class Event_mdl extends CI_Model {
         return $query->result_array();
     }
 
-    //글 정보
+    //행사 정보
     public function get_event_info($id) 
     {
         $this->db->select('*');
@@ -33,30 +33,12 @@ class Event_mdl extends CI_Model {
         return $query->row_array();
     }
 
-    //카테고리 리스트
-    public function get_category_list($type) 
-    {
-        $this->db->select('*');
-        $this->db->from('tp_category');
-        if($type == 'P')
-        {
-            $this->db->where('parent', '0');
-        }
-        else
-        {
-            $this->db->where('parent !=', '0');
-        }
-        $query = $this->db->get();
-
-        return $query->result_array();
-    }
-
-    //작성글 수정
-    public function update_articles($idx, $data) {
+    //행사 수정
+    public function update_event($idx, $data) {
         $this->db->trans_begin();
 
         $this->db->where('id', $idx);
-        $this->db->update('tp_articles', $data);
+        $this->db->update('tp_monthly_events', $data);
 
         if ($this->db->trans_status() === FALSE) {
             // 오류 발생 시 롤백
@@ -70,11 +52,11 @@ class Event_mdl extends CI_Model {
 
     }
 
-    //작성글 등록
-    public function insert_articles($data) {
+    //행사 등록
+    public function insert_event($data) {
         $this->db->trans_begin();
 
-        $this->db->insert('tp_articles', $data);
+        $this->db->insert('tp_monthly_events', $data);
 
         if ($this->db->trans_status() === FALSE) {
             // 오류 발생 시 롤백
@@ -85,6 +67,5 @@ class Event_mdl extends CI_Model {
             $this->db->trans_commit();
             return true;
         }
-
     }
 }

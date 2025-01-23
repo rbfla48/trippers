@@ -54,7 +54,7 @@ $(document).ready(function() {
         var sortValue = $(this).val();
 
         $.ajax({
-            url: 'article/update_sort',
+            url: 'event/update_sort',
             type: 'POST',
             data: {
                 id: id,
@@ -75,7 +75,7 @@ $(document).ready(function() {
         var useYnValue = $(this).is(':checked') ? 'Y' : 'N';
 
         $.ajax({
-            url: 'article/update_use_yn',
+            url: 'event/update_use_yn',
             type: 'POST',
             data: {
                 id: id,
@@ -91,19 +91,19 @@ $(document).ready(function() {
     });
 });
 
-function article_delete(id){
-    var articleId = id;
-    if(articleId == ''){
+function event_delete(id){
+    var eventId = id;
+    if(eventId == ''){
         alert("필수값 누락입니다.");
         return;
     }
     if(confirm('해당 게시물을 삭제하시겠습니까?')){
         $.ajax({
-            url: 'article/article_delete',
+            url: 'event/event_delete',
             dataType: 'json',
             type: 'POST',
             data: {
-                id: articleId
+                id: eventId
             },
             success: function(response) {
                 if(response.code == '0000'){               

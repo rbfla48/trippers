@@ -2,7 +2,7 @@
     <h5>행사일정 관리 > 행사수정</h5>
     <hr/>
     <br/>
-    <form method="post" id="articleForm">
+    <form method="post" id="eventForm">
         <input type="hidden" name="id" id="id" value="<?= $info['id']?>">
         <div>
             <h4>제목</h4>
@@ -10,8 +10,11 @@
             <hr>
 
             <h4>일정</h4>
-                <input type="text" name="start_date" id="start_date" class="form-control w-25" value="<?= $info['start_date'];?>">~
-                <input type="text" name="end_date" id="end_date" class="form-control w-25" value="<?= $info['end_date'];?>">
+                <div class="input-group h-100 w-50 border-0">
+                    <input type="text" name="start_date" id="start_date" class="form-control h-100 w-25" value="<?= $info['start_date'];?>" autocomplete="off">
+                    &nbsp;~&nbsp;
+                    <input type="text" name="end_date" id="end_date" class="form-control h-100 w-25" value="<?= $info['end_date'];?>" autocomplete="off">
+                </div>
             <hr>
 
             <h4>노출용 본문</h4>
@@ -30,7 +33,7 @@
             <div class="container mt-5">
                 <h5>현재 썸네일</h5>
                 <p><?= $info['thumbnail'];?></p>
-                <img src="<?= base_url(get_article_upload_path().$info['thumbnail']);?>" class="img-fluid" style="max-width: 30%;">
+                <img src="<?= base_url(get_event_upload_path().$info['thumbnail']);?>" class="img-fluid" style="max-width: 30%;">
             </div>
 
             <hr>
@@ -48,8 +51,28 @@
 </div>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <script>
-    //본문 에디터
+
     $(document).ready(function() {
+
+        // Datepicker 행사일정
+        $("#start_date, #end_date").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            showAnim: "slideDown",
+            // 한글 설정
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            isRTL: false,
+            yearSuffix: '년',
+            showMonthAfterYear: true
+        });
+
+        //본문 에디터
         $('#content').summernote({
             tabsize: 2,
             height: 500,
@@ -111,7 +134,7 @@
         var data = new FormData();
         data.append("file", file);
         $.ajax({
-            url: '/admin/article/upload_image',
+            url: '/admin/event/upload_image',
             cache: false,
             contentType: false,
             processData: false,
@@ -127,43 +150,22 @@
         });
     }
 
+    //행사일정 수정
     $('#submitBtn').click(function() {
         var formData = new FormData();
         formData.append('id', $('#id').val());
-        if($('#p_id').val()){
-            formData.append('p_id', $('#p_id').val());
-        }
-        if($('#c_id').val()){
-            formData.append('c_id', $('#c_id').val());
-        }
-        formData.append('category1', $('#category1').val());
-        if($('#category2').val()){  
-            formData.append('category2', $('#category2').val());
-        }
-        if($('#banner_image_pc').val()){
-            formData.append('banner_image_pc', $('#banner_image_pc')[0].files[0]);
-        }
-        if($('#banner_image_mobile').val()){
-            formData.append('banner_image_mobile', $('#banner_image_mobile')[0].files[0]);
-        }
         if($('#thumbnail').val()){
             formData.append('thumbnail', $('#thumbnail')[0].files[0]);
         }
         formData.append('title', $('#title').val());
+        formData.append('start_date', $('#start_date').val());
+        formData.append('end_date', $('#end_date').val());
         formData.append('content', $('#content').val());
         formData.append('content_sub', $('#content_sub').val());
-        formData.append('article_by', $('#article_by').val());
-        formData.append('picture_by', $('#picture_by').val());
-        formData.append('place_by', $('#place_by').val());
         formData.append('tag', $('#tag').val());
-        if($('#event_banner_img').val()){
-            formData.append('event_banner_img', $('#event_banner_img')[0].files[0]);
-        }
-        formData.append('event_banner_link', $('#event_banner_link').val());
-        formData.append('event_banner_text', $('#event_banner_text').val());
 
         $.ajax({
-            url: '/admin/article/regi_article',
+            url: '/admin/event/regi_event',
             type: 'POST',
             data: formData,
             contentType: false,
@@ -171,7 +173,7 @@
             success: function(response) {
                 var result = JSON.parse(response)
                 alert(result.msg);
-                window.location.href = '/admin/article';
+                window.location.href = '/admin/event';
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
