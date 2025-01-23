@@ -49,4 +49,32 @@ class Event extends MY_Controller {
 
 		$this->load->view('event_calendar.php',$data);
 	}
+
+    //행사일정 
+    public function event_info()
+    {
+        $data = array();
+
+        $event_id = $this->input->get('id');
+
+        if(!$event_id)
+        {
+            $data['msg'] = '잘못된 접근입니다.';
+            echo json_encode($data);
+            exit;
+        }
+        //행사정보 조회회
+        $info = $this->event_mdl->get_event_info($event_id);
+
+        if(!$info)
+        {
+            $data['msg'] = '조회된 정보가 없습니다.';
+            echo json_encode($data);
+            exit;
+        }
+
+        $data['info'] = $info;
+        
+        $this->load->view('eventDetail.php',$data);
+    }
 }

@@ -34,4 +34,16 @@ class Event_mdl extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    //행사 정보
+    public function get_event_info($id) 
+    {
+        $this->db->select('*');
+        $this->db->from('tp_monthly_events tme');
+        $this->db->where('id', $id);
+
+        $query = $this->db->get();
+
+        return $query->row_array();
+    }
 }

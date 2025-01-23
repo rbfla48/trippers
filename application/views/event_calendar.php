@@ -259,8 +259,8 @@
 		<section class="px-2" style="margin-top: 70px;">
 			<div class="mx-auto d-flex justify-content-between flex-wrap" style="max-width: 1024px;">
 				<?php foreach($events as $list): ?>
-				<div class="card border-0 pointer" style="width: 454px;" onclick="window.location.href='#';">
-					<img src="assets/img/eximg.png" class="card-img-top p-2" alt="...">
+				<div class="card border-0 pointer" style="width: 454px;" onclick="location.href='<?="http://localhost/event/event_info?id=".$list['id']?>'">
+					<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
 					<div class="card-body text-center px-5 pt-2">
 						<img src="assets/img/on.svg" style="padding-bottom: 16px;">
 						<h4 class="card-title fw-bold"><?= $list['title'] ?></h5>
