@@ -31,6 +31,7 @@ class Event_mdl extends CI_Model {
     {
         $this->db->select('start_date, end_date');
         $this->db->from('tp_monthly_events');
-        $query = $this->db->result_array();
+        $query = $this->db->get();
+        return $query->result_array();
     }
 }

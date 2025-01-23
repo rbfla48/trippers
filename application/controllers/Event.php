@@ -23,7 +23,7 @@ class Event extends MY_Controller {
         //전체 행사리스트 조회
         $list = $this->event_mdl->get_events();
 
-        //행사날짜 리스트 조회
+        //달력 아이콘 표기를 위한 행사날짜 리스트 조회
         $event_date_list = $this->event_mdl->get_event_days();
         //조회된 행사일정들 날짜범위 배열데이터 생성
         $event_dates = [];
@@ -43,9 +43,10 @@ class Event extends MY_Controller {
             }
         }
 
-        $data['events'] = $event_date_list;
-        $data['event_dates'] = $event_dates;
+        $data['events'] = $list;
+        $data['event_dates'] = json_encode($event_dates);//스크립트에서 인식할수 있게 json으로 전달
+        $data['event_ranges'] = json_encode($list);
 
-		$this->load->view('main.php',$data);
+		$this->load->view('event_calendar.php',$data);
 	}
 }
