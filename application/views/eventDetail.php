@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>구석구석 남해</title>
 
-  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/assets/bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.js">
   <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
   <link rel="stylesheet" href="/assets/css/Navbar-Centered-Brand-icons.css">
 
@@ -19,13 +20,15 @@
 
 <body>
   <div class="main-container">
-    <div class="profile-container" style="min-height:auto">
-      <div class="profile-text-area ps-lg-1">
-        <div class="text-center">
-          <div class="profile-text-title"><strong><?= $info['title'] ?></strong></div>
+    <!-- 상단 배너 -->
+    <div class="article-banner" style="background-image: url('<?= get_event_upload_path(). ($this->agent->is_mobile() ? $info['banner_image_mobile'] : $info['banner_image_pc'])?>'); background-position: center; background-size: cover;">
+      <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-md-12 text-center">
+          <div class="article-banner-text fw-bold"><strong><?= $info['title']?></strong></div>
         </div>
       </div>
     </div>
+    <!-- //상단 배너 -->
     <!-- 글 본문 영역 -->
     <div class="content-area">
       <?= $info['content']; ?>

@@ -9,6 +9,16 @@
             <input type="text" name="title" id="title" class="form-control">
             <hr>
 
+            <h4>대표 이미지(PC)</h4>
+                <input type="file" name="banner_image_pc" id="banner_image_pc" class="form-control w-25">
+
+            <hr>
+
+            <h4>대표 이미지(모바일)</h4>
+                <input type="file" name="banner_image_mobile" id="banner_image_mobile" class="form-control w-25">
+
+            <hr>
+
             <h4>일정</h4>
             <div class="input-group h-100 w-50 border-0">
                 <input type="text" name="start_date" id="start_date" class="form-control h-100 w-25" autocomplete="off">
@@ -150,6 +160,12 @@
             formData.append('thumbnail', $('#thumbnail')[0].files[0]);
         }
         formData.append('title', $('#title').val());
+        if($('#banner_image_mobile').val()){
+            formData.append('banner_image_mobile', $('#banner_image_mobile')[0].files[0]);
+        }
+        if($('#banner_image_pc').val()){
+            formData.append('banner_image_pc', $('#banner_image_pc')[0].files[0]);
+        }
         formData.append('start_date', $('#start_date').val());
         formData.append('end_date', $('#end_date').val());
         formData.append('content', $('#content').val());

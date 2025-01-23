@@ -131,6 +131,68 @@ class Event extends CI_Controller {
                 exit;
             }
 
+            // 대표 이미지(PC) 업로드 처리
+            $banner_image_pc = null;
+            if (!empty($_FILES['banner_image_pc']['name'])) 
+            { 
+                $config['upload_path']   = FCPATH . 'images/event/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['file_name']     = $this->generate_unique_filename(); // 파일명 생성 함수 호출
+                $config['overwrite']     = TRUE; // 기존 파일 덮어쓰기
+                //$config['max_size'] = 2048; // 2MB
+
+                $this->load->library('upload', $config);
+                //config 초기화
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('banner_image_pc')) {
+
+                    $banner = $this->upload->data();
+
+                    $banner_image_pc = $banner['file_name'];
+
+                } else {
+                    $result['msg'] = $this->upload->display_errors();
+                    echo json_encode($result);
+                    return;
+                }
+            }
+            else
+            {
+                $banner_image_pc = $event['banner_image_pc'];
+            }
+
+            // 대표 이미지(모바일) 업로드 처리
+            $banner_image_mobile = null;
+            if (!empty($_FILES['banner_image_mobile']['name'])) 
+            { 
+                $config['upload_path']   = FCPATH . 'images/event/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['file_name']     = $this->generate_unique_filename(); // 파일명 생성 함수 호출
+                $config['overwrite']     = TRUE; // 기존 파일 덮어쓰기
+                //$config['max_size'] = 2048; // 2MB
+
+                $this->load->library('upload', $config);
+                //config 초기화
+                $this->upload->initialize($config);
+
+                if ($this->upload->do_upload('banner_image_mobile')) {
+
+                    $banner = $this->upload->data();
+
+                    $banner_image_mobile = $banner['file_name'];
+
+                } else {
+                    $result['msg'] = $this->upload->display_errors();
+                    echo json_encode($result);
+                    return;
+                }
+            }
+            else
+            {
+                $banner_image_mobile = $event['banner_image_mobile'];
+            }
+
             // 썸네일 업로드 처리
             $thumbnail_file = null;
             if (!empty($_FILES['thumbnail']['name'])) 
@@ -164,15 +226,17 @@ class Event extends CI_Controller {
 
             //데이터베이스에 저장
             $data = array(
-                'title'              => $title,
-                'start_date'         => $start_date,
-                'end_date'           => $end_date,
-                'thumbnail'          => $thumbnail_file,
-                'content'            => $content,
-                'content_sub'        => $content_sub,
-                'tag'                => $tag,
-                'sort'               => 1,
-                'regdate'            => date('Y-m-d H:i:s'),
+                'title'                 => $title,
+                'banner_image_mobile'   => $banner_image_mobile,
+                'banner_image_pc'       => $banner_image_pc,
+                'start_date'            => $start_date,
+                'end_date'              => $end_date,
+                'thumbnail'             => $thumbnail_file,
+                'content'               => $content,
+                'content_sub'           => $content_sub,
+                'tag'                   => $tag,
+                'sort'                  => 1,
+                'regdate'               => date('Y-m-d H:i:s'),
             );
 
             //id값 있으면 update
