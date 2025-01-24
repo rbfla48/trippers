@@ -184,6 +184,22 @@
 		th div a{
 			font-size: 1.25rem !important;
 		}
+		.custom-check-icon{
+			width: 26px !important;
+		}
+		#pc-event-banner{
+			display: none !important;
+		}
+		#mo-event-banner{
+			display: block !important;
+		}
+		.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+			top: auto !important;
+			right: auto !important;
+			width: 100%;
+			text-align: center !important;
+			left: auto;
+		}
 	}
 	@media (max-width: 425px) {
 		.fc-prev-button{
@@ -204,16 +220,36 @@
 		th div a{
 			padding: 14px 0 !important;
 		}
+		.custom-check-icon{
+			width: 18px !important;
+		}
 	}
 	.fc-icon.fc-icon-chevron-right,
 	.fc-icon.fc-icon-chevron-left{
 		display: none;
 	}
-
   .fc-next-button:focus,
 	.fc-prev-button:focus {
-      box-shadow: none !important; /* 그림자 제거 */
+		box-shadow: none !important; /* 그림자 제거 */
   }
+	.custom-check-icon{
+		width: 31px;
+	}
+
+
+	
+	.text-bg-tag{
+		color: #000 !important;
+    /* background-color: RGBA(var(--bs-light-rgb), var(--bs-bg-opacity, 1)) !important; */
+    background-color: #F0F0F0;
+    border: 1px solid #c7c7c7;
+	}
+	#pc-event-banner{
+		display: block;
+	}
+	#mo-event-banner{
+		display: none;
+	}
 </style>
 <body>
 	<!-- 공통헤더 -->
@@ -256,10 +292,10 @@
 		</section>
 
 		<!-- 이달의 행사 카드 -->
-		<section class="px-2" style="margin-top: 70px;">
-			<div class="mx-auto d-flex justify-content-between flex-wrap" style="max-width: 1024px;">
+		<section class="px-3" style="margin-top: 70px;">
+			<div class="mx-auto d-flex justify-content-center flex-wrap" style="max-width: 1024px; gap: 100px;">
 				<?php foreach($events as $list): ?>
-				<div class="card border-0 pointer" style="width: 454px;" onclick="location.href='<?="http://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
+				<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="http://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
 					<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
 					<div class="card-body text-center px-5 pt-2">
 						<img src="assets/img/on.svg" style="padding-bottom: 16px;">
@@ -270,7 +306,7 @@
 							$tags = explode("#", $list['tag']);
 							for($i = 1; $i < count($tags); $i++): 
 						?>
-						<span class="badge text-bg-secondary fs-6"><?= $tags[$i] ?></span>
+						<span class="badge text-bg-tag fs-6"><?= $tags[$i] ?></span>
 						<?php endfor; ?>
 						</div>
 					</div>
@@ -298,7 +334,7 @@
 		</section>
 
 		<!-- 하단 이벤트 안내 배너 -->
-		<section class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
+		<section id="pc-event-banner" class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
 			<div class="swiper-pagination"></div>
 			<div class="swiper-wrapper">
 				<div class="swiper-slide pointer">
@@ -309,6 +345,20 @@
 				</div>
 				<div class="swiper-slide pointer">
 					<img src="assets/img/namhae03.svg" onclick="window.location.href='#';">
+				</div>
+			</div>
+		</section>
+		<section id="mo-event-banner" class="swiper mySwiper px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
+			<div class="swiper-pagination"></div>
+			<div class="swiper-wrapper">
+				<div class="swiper-slide pointer">
+					<img src="assets/img/namhae-mo01.svg" onclick="window.location.href='#';">
+				</div>
+				<div class="swiper-slide pointer">
+					<img src="assets/img/namhae-mo02.svg" onclick="window.location.href='#';">
+				</div>
+				<div class="swiper-slide pointer">
+					<img src="assets/img/namhae-mo03.svg" onclick="window.location.href='#';">
 				</div>
 			</div>
 		</section>
@@ -357,7 +407,7 @@
 						const checkIcon = document.createElement('img');
 						checkIcon.src = 'assets/img/event-circle.svg'; // 체크 아이콘 경로
 						checkIcon.alt = 'check icon';
-						checkIcon.style.width = '31px';
+						// checkIcon.style.width = '31px';
 						// checkIcon.style.height = '20px';
 						// checkIcon.style.marginTop = '5px';
 						checkIcon.className = 'custom-check-icon'; // 클래스 추가 (추적용)
