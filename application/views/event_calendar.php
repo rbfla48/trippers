@@ -168,6 +168,9 @@
     background-color: transparent !important;
 		border-color: transparent !important;
 	}
+	.media-gap{
+		gap: 100px;
+	}
 	@media (max-width: 768px) {
 		.fc-prev-button{
 			background-image: url(assets/img/month-left-m.svg);
@@ -200,6 +203,9 @@
 			text-align: center !important;
 			left: auto;
 		}
+		.media-gap{
+			gap: 80px;
+		}
 	}
 	@media (max-width: 425px) {
 		.fc-prev-button{
@@ -222,6 +228,12 @@
 		}
 		.custom-check-icon{
 			width: 18px !important;
+		}
+		.media-gap{
+			gap: 60px;
+		}
+		.media-mt-0{
+			margin-top: 0px !important;
 		}
 	}
 	.fc-icon.fc-icon-chevron-right,
@@ -293,7 +305,7 @@
 
 		<!-- 이달의 행사 카드 -->
 		<section class="px-3" style="margin-top: 70px;">
-			<div class="mx-auto d-flex justify-content-center flex-wrap" style="max-width: 1024px; gap: 100px;">
+			<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
 				<?php foreach($events as $list): ?>
 				<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="http://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
 					<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
@@ -348,7 +360,7 @@
 				</div>
 			</div>
 		</section>
-		<section id="mo-event-banner" class="swiper mySwiper px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
+		<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
 			<div class="swiper-pagination"></div>
 			<div class="swiper-wrapper">
 				<div class="swiper-slide pointer">
