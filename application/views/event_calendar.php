@@ -198,7 +198,7 @@
 		}
 		.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
 			top: auto !important;
-			right: auto !important;
+			/* right: auto !important; */
 			width: 100%;
 			text-align: center !important;
 			left: auto;
@@ -266,116 +266,126 @@
 <body>
 	<!-- 공통헤더 -->
 	<!-- <section id="header"></section> -->
-	<section>
-  	<?php include("common/header.php")?>
-	</section>
-	<!-- 로고 -->
-	<section class="text-center" style="padding-top: 70px;">
-		<img src="assets/img/logo.svg" class="logo-size">
-	</section>
-
-	<!-- 타이틀 -->
-	<section class="text-center" style="padding: 70px; 0 100px 0">
-		<img src="assets/img/title.svg" class="title-size">
-	</section>
-
-	<!-- 달력 -->
-  <section class="content" style="padding: 0 0 70px 0;">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col">
-					<div class="card card-primary border-0 mx-auto" style="max-width: 1028px;">
-						<!-- <img src="assets/img/1month-img.svg" class="" style=""> -->
-						<div class="card-body p-0">
-							<img src="assets/img/calender-box.svg" class="w-100 position-absolute">
-              <div id="calendar"></div>
-							<img src="assets/img/2025-namhae-calendar.svg" class="w-100 mt-5">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-	
-	<div style="background-color: #FBFBFB; padding: 70px 0;">
-		<!-- 이달의 행사 -->
-		<section id="month-event" class="text-center">
-			<img src="assets/img/month-event.svg" class="event-size">
+	<?php include("common/header.php")?>
+	<div id="namhae" class="d-none">
+		<!-- 로고 -->
+		<section class="text-center" style="padding-top: 70px;">
+			<img src="assets/img/logo.svg" class="logo-size">
 		</section>
 
-		<!-- 이달의 행사 카드 -->
-		<section class="px-3" style="margin-top: 70px;">
-			<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
-				<?php foreach($events as $list): ?>
-				<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="http://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
-					<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
-					<div class="card-body text-center px-5 pt-2">
-						<img src="assets/img/on.svg" style="padding-bottom: 16px;">
-						<h4 class="card-title fw-bold"><?= $list['title'] ?></h5>
-						<p class="card-text"><?= $list['content_sub'] ?></p>
-						<div class="d-flex flex-wrap justify-content-center" style="gap: 6px;">
-						<?php 
-							$tags = explode("#", $list['tag']);
-							for($i = 1; $i < count($tags); $i++): 
-						?>
-						<span class="badge text-bg-tag fs-6"><?= $tags[$i] ?></span>
-						<?php endfor; ?>
+		<!-- 타이틀 -->
+		<section class="text-center" style="padding: 70px; 0 100px 0">
+			<img src="assets/img/title.svg" class="title-size">
+		</section>
+
+		<!-- 달력 -->
+		<section class="content" style="padding: 0 0 70px 0;">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col">
+						<div class="card card-primary border-0 mx-auto" style="max-width: 1028px;">
+							<!-- <img src="assets/img/1month-img.svg" class="" style=""> -->
+							<div class="card-body p-0">
+								<img src="assets/img/calender-box.svg" class="w-100 position-absolute">
+								<div id="calendar"></div>
+								<img src="assets/img/2025-namhae-calendar.svg" class="w-100 mt-5">
+							</div>
 						</div>
 					</div>
 				</div>
-				<?php endforeach ?>
-				<!-- <div class="card border-0 pointer" style="width: 454px;" onclick="window.location.href='#';">
-					<img src="assets/img/eximg.png" class="card-img-top p-2" alt="...">
-					<div class="card-body text-center px-5 pt-2">
-						<img src="assets/img/off.svg" style="padding-bottom: 16px;">
-						<h4 class="card-title fw-bold">낭만과 미식의 공간</h4>
-						<p class="card-text">레스쁘아 뒤 이브(L'Espoir du Hibou)는 서울 청담동에 위치한 정통 프렌치 레스토랑이야. 프랑스 현지의 비스트로 느낌을 완벽히 재현한</p>
-						<span class="badge text-bg-secondary fs-6">청담</span>
-						<span class="badge text-bg-secondary fs-6">레스쁘아</span>
-						<span class="badge text-bg-secondary fs-6">레스토랑</span>
+			</div>
+		</section>
+		
+		<div style="background-color: #FBFBFB; padding: 70px 0;">
+			<!-- 이달의 행사 -->
+			<section id="month-event" class="text-center">
+				<img src="assets/img/month-event.svg" class="event-size">
+			</section>
+
+			<!-- 이달의 행사 카드 -->
+			<section class="px-3" style="margin-top: 70px;">
+				<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
+					<?php foreach($events as $list): ?>
+					<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="http://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
+						<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
+						<div class="card-body text-center px-5 pt-2">
+							<img src="assets/img/on.svg" style="padding-bottom: 16px;">
+							<h4 class="card-title fw-bold"><?= $list['title'] ?></h5>
+							<p class="card-text"><?= $list['content_sub'] ?></p>
+							<div class="d-flex flex-wrap justify-content-center" style="gap: 6px;">
+							<?php 
+								$tags = explode("#", $list['tag']);
+								for($i = 1; $i < count($tags); $i++): 
+							?>
+							<span class="badge text-bg-tag fs-6"><?= $tags[$i] ?></span>
+							<?php endfor; ?>
+							</div>
+						</div>
 					</div>
-				</div> -->
-			</div>
-		</section>
+					<?php endforeach ?>
+					<!-- <div class="card border-0 pointer" style="width: 454px;" onclick="window.location.href='#';">
+						<img src="assets/img/eximg.png" class="card-img-top p-2" alt="...">
+						<div class="card-body text-center px-5 pt-2">
+							<img src="assets/img/off.svg" style="padding-bottom: 16px;">
+							<h4 class="card-title fw-bold">낭만과 미식의 공간</h4>
+							<p class="card-text">레스쁘아 뒤 이브(L'Espoir du Hibou)는 서울 청담동에 위치한 정통 프렌치 레스토랑이야. 프랑스 현지의 비스트로 느낌을 완벽히 재현한</p>
+							<span class="badge text-bg-secondary fs-6">청담</span>
+							<span class="badge text-bg-secondary fs-6">레스쁘아</span>
+							<span class="badge text-bg-secondary fs-6">레스토랑</span>
+						</div>
+					</div> -->
+				</div>
+			</section>
+		</div>
+
+		<div style="padding: 70px 0;">
+			<!-- 이벤트 안내 -->
+			<section class="text-center">
+				<img src="assets/img/popup-event.svg" class="event-size">
+			</section>
+
+			<!-- 하단 이벤트 안내 배너 -->
+			<section id="pc-event-banner" class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
+				<div class="swiper-pagination"></div>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae01.svg" onclick="window.location.href='#';">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae02.svg" onclick="window.location.href='#';">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae03.svg" onclick="window.location.href='#';">
+					</div>
+				</div>
+			</section>
+			<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
+				<div class="swiper-pagination"></div>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae-mo01.svg" onclick="window.location.href='#';">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae-mo02.svg" onclick="window.location.href='#';">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae-mo03.svg" onclick="window.location.href='#';">
+					</div>
+				</div>
+			</section>
+		</div>
 	</div>
-
-	<div style="padding: 70px 0;">
-		<!-- 이벤트 안내 -->
-		<section class="text-center">
-			<img src="assets/img/popup-event.svg" class="event-size">
-		</section>
-
-		<!-- 하단 이벤트 안내 배너 -->
-		<section id="pc-event-banner" class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
-			<div class="swiper-pagination"></div>
-			<div class="swiper-wrapper">
-				<div class="swiper-slide pointer">
-					<img src="assets/img/namhae01.svg" onclick="window.location.href='#';">
-				</div>
-				<div class="swiper-slide pointer">
-					<img src="assets/img/namhae02.svg" onclick="window.location.href='#';">
-				</div>
-				<div class="swiper-slide pointer">
-					<img src="assets/img/namhae03.svg" onclick="window.location.href='#';">
-				</div>
-			</div>
-		</section>
-		<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
-			<div class="swiper-pagination"></div>
-			<div class="swiper-wrapper">
-				<div class="swiper-slide pointer">
-					<img src="assets/img/namhae-mo01.svg" onclick="window.location.href='#';">
-				</div>
-				<div class="swiper-slide pointer">
-					<img src="assets/img/namhae-mo02.svg" onclick="window.location.href='#';">
-				</div>
-				<div class="swiper-slide pointer">
-					<img src="assets/img/namhae-mo03.svg" onclick="window.location.href='#';">
-				</div>
-			</div>
-		</section>
+	<div id="mygoodplace" class="d-block">
+		<div class="text-center" style="margin-top: 50px;">
+			<img src="assets/img/preparing.svg" class="logo-size" style="max-width: 250px;">
+		</div>
+		<div class="text-center" style="margin-bottom: 50px;">
+			<p class="fs-1" style="font-weight: 100;"><b class="fw-bold" style="color:#5ed1ff">서비스 준비중</b>입니다.</p>
+			<p class="mb-0">이용에 불편을 드려 죄송합니다.</p>
+			<p class="mb-0">보다 나은 서비스 제공을 위하여 페이지 준비중에 있습니다.</p>
+			<p class="mb-0">빠른시일내에 준비하여 찾아뵙겠습니다.</p>
+		</div>
 	</div>
-
 	<!-- 공통푸터 -->
 	<!-- <section id="footer"></section> -->
 	<?php include("common/footer.php")?>
