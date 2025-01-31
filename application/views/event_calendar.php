@@ -267,7 +267,7 @@
 	<!-- 공통헤더 -->
 	<!-- <section id="header"></section> -->
 	<?php include("common/header.php")?>
-	<div id="namhae" class="d-none">
+	<div id="namhae" class="d-block">
 		<!-- 로고 -->
 		<section class="text-center" style="padding-top: 70px;">
 			<img src="assets/img/logo.svg" class="logo-size">
@@ -375,7 +375,7 @@
 			</section>
 		</div>
 	</div>
-	<div id="mygoodplace" class="d-block">
+	<div id="mygoodplace" class="d-none">
 		<div class="text-center" style="margin-top: 50px;">
 			<img src="assets/img/preparing.svg" class="logo-size" style="max-width: 250px;">
 		</div>

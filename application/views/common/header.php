@@ -12,10 +12,10 @@
 </style>
 <!-- 상단탭 -->
 <header class="header d-flex justify-content-center">
-	<button type="button" id="tab01" class="btn btn-link rounded-0">
+	<button type="button" id="tab01" class="btn btn-link rounded-0 active">
 		<img src="assets/img/header_tab01.svg" class="svg-icon w-100">
 	</button>
-	<button type="button" id="tab02" class="btn btn-link rounded-0 active">
+	<button type="button" id="tab02" class="btn btn-link rounded-0">
 		<img src="assets/img/header_tab02.svg" class="svg-icon w-100">
 	</button>
 </header>
