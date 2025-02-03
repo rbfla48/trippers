@@ -267,6 +267,7 @@
 	<!-- 공통헤더 -->
 	<!-- <section id="header"></section> -->
 	<?php include("common/header.php")?>
+	<!-- 구석구석 남해 tab -->
 	<div id="namhae" class="d-block">
 		<!-- 로고 -->
 		<section class="text-center" style="padding-top: 70px;">
@@ -288,7 +289,7 @@
 							<div class="card-body p-0">
 								<img src="assets/img/calender-box.svg" class="w-100 position-absolute">
 								<div id="calendar"></div>
-								<img src="assets/img/2025-namhae-calendar.svg" class="w-100 mt-5">
+								<img src="assets/img/2025-namhae-calendar.svg" class="w-100" style="margin-top: 4%;">
 							</div>
 						</div>
 					</div>
@@ -345,7 +346,7 @@
 			</section>
 
 			<!-- 하단 이벤트 안내 배너 -->
-			<section id="pc-event-banner" class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
+			<section id="pc-event-banner" class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
 				<div class="swiper-pagination"></div>
 				<div class="swiper-wrapper">
 					<div class="swiper-slide pointer">
@@ -359,7 +360,7 @@
 					</div>
 				</div>
 			</section>
-			<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 70px;">
+			<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
 				<div class="swiper-pagination"></div>
 				<div class="swiper-wrapper">
 					<div class="swiper-slide pointer">
@@ -375,6 +376,7 @@
 			</section>
 		</div>
 	</div>
+	<!-- my good place tab -->
 	<div id="mygoodplace" class="d-none">
 		<div class="text-center" style="margin-top: 50px;">
 			<img src="assets/img/preparing.svg" class="logo-size" style="max-width: 250px;">
@@ -431,7 +433,7 @@
 						checkIcon.alt = 'check icon';
 						// checkIcon.style.width = '31px';
 						// checkIcon.style.height = '20px';
-						// checkIcon.style.marginTop = '5px';
+						checkIcon.style.marginBottom = '8px';
 						checkIcon.className = 'custom-check-icon'; // 클래스 추가 (추적용)
 
 						// 숫자 아래에 아이콘 추가
