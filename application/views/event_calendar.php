@@ -221,7 +221,11 @@
 		}
 		.left-box-m,
 		.right-box-m{
-			height: 540px;
+			height: 545px;
+		}
+		#calendar{
+			width: 94%;
+    	margin: 0 auto;
 		}
 	}
 	@media (max-width: 425px) {
@@ -269,7 +273,7 @@
 		}
 		.left-box,
 		.right-box{
-			height: 416px;
+			height: 421px;
 		}
 	}
 	.left-box,
@@ -337,7 +341,7 @@
 								<img src="assets/img/left-box-m.svg" class="position-absolute start-0 left-box-m">
 								<img src="assets/img/right-box-m.svg" class="position-absolute end-0 right-box-m">
 								<div id="calendar"></div>
-								<img src="assets/img/2025-namhae-calendar.svg" class="w-100" style="margin-top: 4%;">
+								<img src="assets/img/2025-namhae-calendar.svg" class="w-100" style="margin-top: 7%;">
 							</div>
 						</div>
 					</div>
