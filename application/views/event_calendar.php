@@ -207,6 +207,23 @@
 			gap: 80px;
 		}
 	}
+	@media (max-width: 742px) {
+		.fc .fc-view-harness {
+			height: 532px !important;
+		}
+		#calender-box{
+			display: none;
+		}
+		.left-box-m,
+		.right-box-m,
+		.top-box{
+			display: block !important;
+		}
+		.left-box-m,
+		.right-box-m{
+			height: 540px;
+		}
+	}
 	@media (max-width: 425px) {
 		.fc-prev-button{
 			background-image: url(assets/img/month-left-s.svg);
@@ -235,6 +252,32 @@
 		.media-mt-0{
 			margin-top: 0px !important;
 		}
+		.fc .fc-view-harness {
+			height: 409px !important;
+		}
+		#calender-box{
+			display: none;
+		}
+		.left-box-m,
+		.right-box-m{
+			display: none !important;
+		}
+		.left-box,
+		.right-box,
+		.top-box{
+			display: block !important;
+		}
+		.left-box,
+		.right-box{
+			height: 416px;
+		}
+	}
+	.left-box,
+	.right-box,
+	.left-box-m,
+	.right-box-m,
+	.top-box{
+		display: none;
 	}
 	.fc-icon.fc-icon-chevron-right,
 	.fc-icon.fc-icon-chevron-left{
@@ -287,7 +330,12 @@
 						<div class="card card-primary border-0 mx-auto" style="max-width: 1028px;">
 							<!-- <img src="assets/img/1month-img.svg" class="" style=""> -->
 							<div class="card-body p-0">
-								<img src="assets/img/calender-box.svg" class="w-100 position-absolute">
+								<img src="assets/img/calender-box.svg" id="calender-box" class="w-100 position-absolute">
+								<img src="assets/img/top-box.svg" class="position-absolute top-box w-100">
+								<img src="assets/img/left-box.svg" class="position-absolute start-0 left-box">
+								<img src="assets/img/right-box.svg" class="position-absolute end-0 right-box">
+								<img src="assets/img/left-box-m.svg" class="position-absolute start-0 left-box-m">
+								<img src="assets/img/right-box-m.svg" class="position-absolute end-0 right-box-m">
 								<div id="calendar"></div>
 								<img src="assets/img/2025-namhae-calendar.svg" class="w-100" style="margin-top: 4%;">
 							</div>
