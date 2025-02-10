@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Visitnamhae</title>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script> -->
@@ -209,7 +209,7 @@
 	}
 	@media (max-width: 742px) {
 		.fc .fc-view-harness {
-			height: 532px !important;
+			height: 550px !important;
 		}
 		#calender-box{
 			display: none;
@@ -221,7 +221,7 @@
 		}
 		.left-box-m,
 		.right-box-m{
-			height: 545px;
+			height: 565px;
 		}
 		#calendar{
 			width: 94%;
@@ -402,13 +402,13 @@
 				<div class="swiper-pagination"></div>
 				<div class="swiper-wrapper">
 					<div class="swiper-slide pointer">
-						<img src="assets/img/namhae01.svg" onclick="window.location.href='#';">
+						<img src="assets/img/namhae01.svg" class="loading">
 					</div>
 					<div class="swiper-slide pointer">
-						<img src="assets/img/namhae02.svg" onclick="window.location.href='#';">
+						<img src="assets/img/namhae02.svg" class="loading">
 					</div>
 					<div class="swiper-slide pointer">
-						<img src="assets/img/namhae03.svg" onclick="window.location.href='#';">
+						<img src="assets/img/namhae03.svg" class="loading">
 					</div>
 				</div>
 			</section>
@@ -416,13 +416,13 @@
 				<div class="swiper-pagination"></div>
 				<div class="swiper-wrapper">
 					<div class="swiper-slide pointer">
-						<img src="assets/img/namhae-mo01.svg" onclick="window.location.href='#';">
+						<img src="assets/img/namhae-mo01.svg" class="loading">
 					</div>
 					<div class="swiper-slide pointer">
-						<img src="assets/img/namhae-mo02.svg" onclick="window.location.href='#';">
+						<img src="assets/img/namhae-mo02.svg" class="loading">
 					</div>
 					<div class="swiper-slide pointer">
-						<img src="assets/img/namhae-mo03.svg" onclick="window.location.href='#';">
+						<img src="assets/img/namhae-mo03.svg" class="loading">
 					</div>
 				</div>
 			</section>
@@ -574,5 +574,9 @@
     });
 	});
 	
+	// 하단배너 클릭시 알러트
+	$(".loading").click(function() {
+		alert("준비중 입니다. 😀");
+	});
 </script>
 </html>

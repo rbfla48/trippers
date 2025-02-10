@@ -47,8 +47,8 @@
 			<p class="fw-bold fs-2 media-title media-text-center">남해군청</p>
 		</div>
 		<div class="d-flex media-number media-mb3" style="gap: 24px;">
-			<p class="fs-4 mb-1 media-middle">대표전화 : 055-860-3114</p>
-			<p class="fs-4 mb-1 media-middle">팩스번호 : 055-860-3535</p>
+			<p class="fs-4 mb-1 media-middle">대표전화 : 055-860-8601</p>
+			<p class="fs-4 mb-1 media-middle">팩스번호 : 055-860-3748</p>
 		</div>
 		<div class="media-flex media-wrap media-justify-center media-mb3">
 			<span class="fs-4 media-middle">본 사이트는 이메일 주소가 무단 수집되는 것을 거부하며, </span>
