@@ -359,10 +359,11 @@
 			<section class="px-3" style="margin-top: 70px;">
 				<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
 					<?php foreach($events as $list): ?>
-					<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="http://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
+					<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
 						<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
 						<div class="card-body text-center px-5 pt-2">
-							<img src="assets/img/on.svg" style="padding-bottom: 16px;">
+							<!-- <img src="assets/img/off.svg" style="padding-bottom: 16px;"> -->
+							<img src="assets/img/off.svg" style="padding-bottom: 16px;" class="event-status" data-start="<?= $list['start_date'] ?>" data-end="<?= $list['end_date'] ?>">
 							<h4 class="card-title fw-bold"><?= $list['title'] ?></h5>
 							<p class="card-text"><?= $list['content_sub'] ?></p>
 							<div class="d-flex flex-wrap justify-content-center" style="gap: 6px;">
@@ -376,17 +377,6 @@
 						</div>
 					</div>
 					<?php endforeach ?>
-					<!-- <div class="card border-0 pointer" style="width: 454px;" onclick="window.location.href='#';">
-						<img src="assets/img/eximg.png" class="card-img-top p-2" alt="...">
-						<div class="card-body text-center px-5 pt-2">
-							<img src="assets/img/off.svg" style="padding-bottom: 16px;">
-							<h4 class="card-title fw-bold">낭만과 미식의 공간</h4>
-							<p class="card-text">레스쁘아 뒤 이브(L'Espoir du Hibou)는 서울 청담동에 위치한 정통 프렌치 레스토랑이야. 프랑스 현지의 비스트로 느낌을 완벽히 재현한</p>
-							<span class="badge text-bg-secondary fs-6">청담</span>
-							<span class="badge text-bg-secondary fs-6">레스쁘아</span>
-							<span class="badge text-bg-secondary fs-6">레스토랑</span>
-						</div>
-					</div> -->
 				</div>
 			</section>
 		</div>
@@ -494,35 +484,42 @@
 				}
 			},
 			dateClick: function (info) {
-				// 클릭된 날짜의 셀을 가져오기
-				const clickedDate = info.date.toLocaleDateString('en-CA'); // 로컬 타임존 기준 날짜 'YYYY-MM-DD' 형식으로 변환
+				// 클릭한 날짜를 'YYYY-MM-DD' 형식으로 변환
+				const clickedDate = info.date.toLocaleDateString('en-CA'); 
+				
+				// 기존 캘린더 아이콘 처리 (예시)
 				const allIcons = document.querySelectorAll('.custom-check-icon');
-
-				let isIconChanged = false; // 특정 날짜에서 아이콘이 변경되었는지 확인하기 위한 플래그
-
+				let isIconChanged = false;
 				allIcons.forEach((icon) => {
-					// 부모 요소의 날짜 텍스트 가져오기
 					const parentDateText = icon.closest('.fc-daygrid-day').dataset.date;
-
 					if (parentDateText === clickedDate) {
 						if (icon.src.includes('event-circle.svg')) {
-							// 클릭된 날짜의 아이콘이 'event-circle.svg'일 경우만 변경
 							icon.src = 'assets/img/event-circle-on.svg';
-							isIconChanged = true; // 아이콘이 변경됨을 플래그로 표시
+							isIconChanged = true;
 						}
 					} else {
-						// 다른 날짜는 항상 기본 아이콘으로 설정
 						icon.src = 'assets/img/event-circle.svg';
 					}
 				});
-
-				// 아이콘이 변경되었을 경우만 특정 섹션으로 스크롤
 				if (isIconChanged) {
 					const targetSection = document.querySelector('#month-event');
 					if (targetSection) {
 						targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 					}
 				}
+				
+				// 각 행사 카드의 on/off이미지 변경 처리 추가
+				const eventStatusImages = document.querySelectorAll('.event-status');
+				eventStatusImages.forEach((img) => {
+					const startDate = img.getAttribute('data-start'); // ex: "2025-03-01"
+					const endDate = img.getAttribute('data-end');       // ex: "2025-03-10"
+					// 날짜 형식이 "YYYY-MM-DD"이어야 비교가능
+					if (clickedDate >= startDate && clickedDate <= endDate) {
+						img.src = "assets/img/on.svg";
+					} else {
+						img.src = "assets/img/off.svg";
+					}
+				});
 			},
 			selectable: true, // 드래그로 날짜 선택 가능
 			droppable: true,  // 드래그 가능
