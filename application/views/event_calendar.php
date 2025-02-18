@@ -359,7 +359,7 @@
 			<section class="px-3" style="margin-top: 70px;">
 				<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
 					<?php foreach($events as $list): ?>
-					<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
+					<div class="card border-0 pointer event-card" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
 						<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
 						<div class="card-body text-center px-5 pt-2">
 							<!-- <img src="assets/img/off.svg" style="padding-bottom: 16px;"> -->
@@ -509,17 +509,7 @@
 				}
 				
 				// 각 행사 카드의 on/off이미지 변경 처리 추가
-				const eventStatusImages = document.querySelectorAll('.event-status');
-				eventStatusImages.forEach((img) => {
-					const startDate = img.getAttribute('data-start'); // ex: "2025-03-01"
-					const endDate = img.getAttribute('data-end');       // ex: "2025-03-10"
-					// 날짜 형식이 "YYYY-MM-DD"이어야 비교가능
-					if (clickedDate >= startDate && clickedDate <= endDate) {
-						img.src = "assets/img/on.svg";
-					} else {
-						img.src = "assets/img/off.svg";
-					}
-				});
+				updateEventStasus(clickedDate);
 			},
 			selectable: true, // 드래그로 날짜 선택 가능
 			droppable: true,  // 드래그 가능
@@ -528,10 +518,11 @@
 			// locale: 'ko', // 한국어 설정
 			validRange: {
 				start: '2025-01-01', // 달력 시작 날짜
-				end: '2026-01-01'    // 달력 끝 날짜 (7월 1일은 포함되지 않음)
+				end: '2026-01-01'    // 달력 끝 날짜 (26년 1월 1일은 포함되지 않음)
 			},
 			datesSet: function () {
 				updateCalendarImage(); // 날짜가 변경될 때마다 월 이미지 업데이트
+				updateEventStasus();
 			}
     });
 
@@ -551,9 +542,51 @@
 					var currentMonth = monthMatch[1]; // 추출된 월 (문자열)
 					var imagePath = `assets/img/${currentMonth}month.svg`; // 이미지 경로 설정
 					calendarImage.src = imagePath; // 이미지 업데이트
+							
+					// 이벤트 카드 노출목록 필터링
+					var eventCards = document.querySelectorAll('.event-card');
+					eventCards.forEach(function(card) {
+						// 각 카드 내의 행사 상태 이미지에서 시작일과 종료일 가져오기
+						var statusImg = card.querySelector('.event-status');
+						if (statusImg) {
+							var startDate = statusImg.getAttribute('data-start'); // 예: "2025-03-10"
+							var endDate = statusImg.getAttribute('data-end');       // 예: "2025-03-15"
+							
+							// 날짜 형식이 "YYYY-MM-DD"라고 가정하고, 월 정보를 추출
+							var startMonth = parseInt(startDate.split('-')[1], 10);
+							var endMonth = parseInt(endDate.split('-')[1], 10);
+
+							// 시작월 또는 종료월 중 하나라도 현재 달과 같다면
+							if (currentMonth == startMonth || currentMonth == endMonth) {
+								card.style.display = "inline"; // 또는 "inline" 등 원하는 display 값
+							} else {
+								card.style.display = "none";
+							}
+						}
+					});
+					
 				}
+
 			}
     }
+
+	//행사타일의 on/off 아이콘변경
+	function updateEventStasus(clickedDate){
+		if(clickedDate == null || clickedDate == ''){
+			clickedDate = "<?= date("Y-m-d")?>";
+		}
+		const eventStatusImages = document.querySelectorAll('.event-status');
+		eventStatusImages.forEach((img) => {
+			const startDate = img.getAttribute('data-start'); // ex: "2025-03-01"
+			const endDate = img.getAttribute('data-end');       // ex: "2025-03-10"
+			// 날짜 형식이 "YYYY-MM-DD"이어야 비교가능
+			if (clickedDate >= startDate && clickedDate <= endDate) {
+				img.src = "assets/img/on.svg";
+			} else {
+				img.src = "assets/img/off.svg";
+			}
+		});
+	}
 
     // 하단 스와이퍼 초기화
     var swiper = new Swiper(".mySwiper", {

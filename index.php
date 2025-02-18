@@ -305,6 +305,19 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
+	//visitnamhae.co.kr진입시 '/event' 경로로 연결
+	// 현재 접속한 도메인 확인
+	$host = $_SERVER['HTTP_HOST'];
+
+	// 요청된 URI 확인 (예: "/" 또는 "/index.php")
+	$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+	// 만약 도메인이 visitnamhae.co.kr 이면서 루트 또는 index.php로 접근한 경우
+	if ($host === 'visitnamhae.co.kr' && ($requestUri === '/' || $requestUri === '/index.php')) {
+		header("Location: https://visitnamhae.co.kr/event");
+		exit;
+	}
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
