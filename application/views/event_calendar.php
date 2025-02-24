@@ -58,7 +58,7 @@
 	.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
 		top: 0 !important;
     right: 0 !important;
-    width: 80px;
+    width: 100px;
     text-align: end !important;
     left: auto;
 	}
@@ -361,6 +361,7 @@
 					<?php foreach($events as $list): ?>
 					<div class="card border-0 pointer event-card" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
 						<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
+						<!-- <img src="assets/img/eximg.png" class="card-img-top p-2" alt="..."> -->
 						<div class="card-body text-center px-5 pt-2">
 							<!-- <img src="assets/img/off.svg" style="padding-bottom: 16px;"> -->
 							<img src="assets/img/off.svg" style="padding-bottom: 16px;" class="event-status" data-start="<?= $list['start_date'] ?>" data-end="<?= $list['end_date'] ?>">
@@ -400,6 +401,9 @@
 					<div class="swiper-slide pointer">
 						<img src="assets/img/namhae03.svg" class="loading">
 					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae04.svg" onclick="window.location.href='https://walla.my/survey/y94fnZEQgIZuabehogjq';">
+					</div>
 				</div>
 			</section>
 			<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
@@ -414,21 +418,133 @@
 					<div class="swiper-slide pointer">
 						<img src="assets/img/namhae-mo03.svg" class="loading">
 					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae-mo04.svg" onclick="window.location.href='https://walla.my/survey/y94fnZEQgIZuabehogjq';">
+					</div>
 				</div>
 			</section>
 		</div>
 	</div>
+
+
+
+
+
+
+
 	<!-- my good place tab -->
 	<div id="mygoodplace" class="d-none">
-		<div class="text-center" style="margin-top: 50px;">
-			<img src="assets/img/preparing.svg" class="logo-size" style="max-width: 250px;">
+		<!-- 로고 -->
+		<section class="text-center" style="margin-top: 70px;">
+			<img src="assets/img/mygoodplace_logo.svg" class="logo-size" style="max-width: 746px;">
+		</section>
+
+		<!-- 타이틀 -->
+		<section class="text-center" style="padding: 70px 0 100px 0;">
+			<img src="assets/img/mygoodplace_title.svg" class="title-size" style="max-width: 352px;">
+		</section>
+
+		<!-- 지도 -->
+		<section class="text-center mx-auto" style="padding: 0 10px 70px; max-width: 1028px;">
+			<img src="assets/img/namhae-map.svg" class="w-100">
+			<img src="assets/img/2025-namhae-map.svg" class="w-100" style="margin: 4% 0; max-width: 540px;">
+			<select class="form-select mx-auto" style="max-width: 450px;">
+				<option value="all" selected>전체</option>
+				<option value="Samdong">삼동면</option>
+				<option value="Sangju">상주면</option>
+				<option value="Mijo">미조면</option>
+				<option value="Idong">이동면</option>
+				<option value="Nam">남면</option>
+				<option value="Seo">서면</option>
+				<option value="Changseon">창선면</option>
+				<option value="Seolcheon">설천면</option>
+				<option value="Namhae">남해읍</option>
+				<option value="Gohyeon">고현면</option>
+			</select>
+		</section>
+
+		<div style="background-color: #FBFBFB; padding: 70px 0;">
+			<!-- 이달의 행사 -->
+			<section id="month-event" class="text-center">
+				<img src="assets/img/map-event.svg" class="event-size">
+			</section>
+
+			<!-- 이달의 행사 카드 -->
+			<section class="px-3" style="margin-top: 70px;">
+				<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
+					<?php foreach($events as $list): ?>
+					<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
+						<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
+						<!-- <img src="assets/img/eximg.png" class="card-img-top p-2" alt="..."> -->
+						<div class="card-body text-center px-5 pt-2">
+							<!-- <img src="assets/img/off.svg" style="padding-bottom: 16px;"> -->
+							<img src="assets/img/off.svg" style="padding-bottom: 16px;" class="event-status" data-start="<?= $list['start_date'] ?>" data-end="<?= $list['end_date'] ?>">
+							<h4 class="card-title fw-bold"><?= $list['title'] ?></h5>
+							<p class="card-text"><?= $list['content_sub'] ?></p>
+							<div class="d-flex flex-wrap justify-content-center" style="gap: 6px;">
+							<?php 
+								$tags = explode("#", $list['tag']);
+								for($i = 1; $i < count($tags); $i++): 
+							?>
+							<span class="badge text-bg-tag fs-6"><?= $tags[$i] ?></span>
+							<?php endfor; ?>
+							</div>
+						</div>
+					</div>
+					<?php endforeach ?>
+				</div>
+			</section>
 		</div>
-		<div class="text-center" style="margin-bottom: 50px;">
+
+		<div style="padding: 70px 0;">
+			<!-- 이벤트 안내 -->
+			<section class="text-center">
+				<img src="assets/img/popup-event.svg" class="event-size">
+			</section>
+
+			<!-- 하단 이벤트 안내 배너 -->
+			<section id="pc-event-banner" class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
+				<div class="swiper-pagination"></div>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae01.svg" class="loading">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae02.svg" class="loading">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae03.svg" class="loading">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae04.svg" onclick="window.location.href='https://walla.my/survey/y94fnZEQgIZuabehogjq';">
+					</div>
+				</div>
+			</section>
+			<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
+				<div class="swiper-pagination"></div>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae-mo01.svg" class="loading">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae-mo02.svg" class="loading">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae-mo03.svg" class="loading">
+					</div>
+					<div class="swiper-slide pointer">
+						<img src="assets/img/namhae-mo04.svg" onclick="window.location.href='https://walla.my/survey/y94fnZEQgIZuabehogjq';">
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- <div class="text-center" style="margin-bottom: 50px;">
 			<p class="fs-1" style="font-weight: 100;"><b class="fw-bold" style="color:#5ed1ff">서비스 준비중</b>입니다.</p>
 			<p class="mb-0">이용에 불편을 드려 죄송합니다.</p>
 			<p class="mb-0">보다 나은 서비스 제공을 위하여 페이지 준비중에 있습니다.</p>
 			<p class="mb-0">빠른시일내에 준비하여 찾아뵙겠습니다.</p>
-		</div>
+		</div> -->
 	</div>
 	<!-- 공통푸터 -->
 	<!-- <section id="footer"></section> -->
