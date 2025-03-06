@@ -309,6 +309,12 @@
 	#mo-event-banner{
 		display: none;
 	}
+
+	.minilogo{
+		width: 20%;
+		min-width: 115px;
+		max-width: 175px;
+	}
 </style>
 <body>
 	<!-- 공통헤더 -->
@@ -440,17 +446,30 @@
 		</section>
 
 		<!-- 타이틀 -->
-		<section class="text-center" style="padding: 70px 0 100px 0;">
-			<img src="assets/img/mygoodplace_title.svg" class="title-size" style="max-width: 352px;">
+		<section class="text-center" style="padding: 70px 0 0 0;">
+			<img src="assets/img/mygoodplace_title.svg" class="title-size" style="max-width: 352px; width: 60%;">
 		</section>
 
 		<!-- 지도 -->
-		<section class="text-center mx-auto" style="padding: 0 10px 70px; max-width: 1028px;">
-			<img src="assets/img/namhae-map.svg" class="w-100">
+		<section class="text-center mx-auto" style="padding: 0 0 70px; max-width: 1028px;">
+			<!-- <img src="assets/img/namhae-map.svg" class="w-100"> -->
+			<div class="my-5">
+				<img src="assets/img/map_samdong.svg" class="w-100">
+				<img src="assets/img/map_sangju.svg" class="w-100 d-none">
+				<img src="assets/img/map_mijo.svg" class="w-100 d-none">
+				<img src="assets/img/map_idong.svg" class="w-100 d-none">
+				<img src="assets/img/map_nam.svg" class="w-100 d-none">
+				<img src="assets/img/map_seo.svg" class="w-100 d-none">
+				<img src="assets/img/map_changseon.svg" class="w-100 d-none">
+				<img src="assets/img/map_seolcheon.svg" class="w-100 d-none">
+				<img src="assets/img/map_namhae.svg" class="w-100 d-none">
+				<img src="assets/img/map_gohyeon.svg" class="w-100 d-none">
+			</div>
+			
 			<img src="assets/img/2025-namhae-map.svg" class="w-100" style="margin: 4% 0; max-width: 540px;">
-			<select class="form-select mx-auto" style="max-width: 450px;">
-				<option value="all" selected>전체</option>
-				<option value="Samdong">삼동면</option>
+			<select class="form-select mx-auto" style="max-width: 450px; width: 80%;">
+				<!-- <option value="all" selected>전체</option> -->
+				<option value="Samdong" selected>삼동면</option>
 				<option value="Sangju">상주면</option>
 				<option value="Mijo">미조면</option>
 				<option value="Idong">이동면</option>
@@ -496,10 +515,27 @@
 			</section>
 		</div>
 
+		<!-- 영상 안내 로고 -->
+		<section class="text-center">
+			<img src="assets/img/mygoodplace_minilogo.svg" class="my-4 minilogo">
+		</section>
+		
+		<!-- 영상 안내 -->
+		<section>
+			<iframe 
+				src="https://www.youtube.com/embed/ZNXknbY4TFM?autoplay=1&mute=1" 
+				title="YouTube video player" 
+				frameborder="0" 
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen
+				style="max-width: 1024px; width: 100%; aspect-ratio: 16 / 9;">
+			</iframe>
+		</section>
+
 		<div style="padding: 70px 0;">
 			<!-- 이벤트 안내 -->
 			<section class="text-center">
-				<img src="assets/img/popup-event.svg" class="event-size">
+				<img src="assets/img/popup-event-mygood.svg" class="event-size">
 			</section>
 
 			<!-- 하단 이벤트 안내 배너 -->
@@ -516,7 +552,7 @@
 						<img src="assets/img/namhae03.svg" class="loading">
 					</div>
 					<div class="swiper-slide pointer">
-						<img src="assets/img/namhae04.svg" onclick="window.location.href='https://walla.my/survey/y94fnZEQgIZuabehogjq';">
+						<img src="assets/img/namhae04.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
 					</div>
 				</div>
 			</section>
@@ -533,7 +569,7 @@
 						<img src="assets/img/namhae-mo03.svg" class="loading">
 					</div>
 					<div class="swiper-slide pointer">
-						<img src="assets/img/namhae-mo04.svg" onclick="window.location.href='https://walla.my/survey/y94fnZEQgIZuabehogjq';">
+						<img src="assets/img/namhae-mo04.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
 					</div>
 				</div>
 			</section>
@@ -724,5 +760,25 @@
 	$(".loading").click(function() {
 		alert("준비중 입니다. 😀");
 	});
+
+	// 마이굿 지도
+  document.addEventListener("DOMContentLoaded", function () {
+    const selectBox = document.querySelector(".form-select");
+    const images = document.querySelectorAll("section img.w-100:not([src*='2025-namhae-map.svg'])");
+
+    selectBox.addEventListener("change", function () {
+      // 모든 지도 이미지 숨기기 (2025-namhae-map.svg 제외)
+      images.forEach(img => img.classList.add("d-none"));
+
+      // 선택한 값에 맞는 이미지 찾기
+      const selectedValue = selectBox.value.toLowerCase();
+      const selectedImg = document.querySelector(`img[src*="map_${selectedValue}.svg"]`);
+
+      if (selectedImg) {
+        selectedImg.classList.remove("d-none"); // 선택한 이미지 보이기
+      }
+    });
+  });
+</script>
 </script>
 </html>
