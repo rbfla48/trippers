@@ -521,7 +521,7 @@
 		</section>
 		
 		<!-- 영상 안내 -->
-		<section>
+		<section class="text-center">
 			<iframe 
 				src="https://www.youtube.com/embed/ZNXknbY4TFM?autoplay=1&mute=1" 
 				title="YouTube video player" 
