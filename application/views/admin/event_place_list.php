@@ -1,13 +1,13 @@
 <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <h2>행사관리 > 구석구석 남해</h2>
-    <button onclick="location.href='event/write'" class="btn btn-secondary btn-sm">행사등록</button>
+    <h2>행사관리 > 마이굿플레이스</h2>
+    <button onclick="location.href='/admin/event/place_write'" class="btn btn-secondary btn-sm">행사등록</button>
     <div class="table-responsive">
         <table class="table table-striped table-sm w100">
             <thead>
             <tr>
                 <th scope="col">no.</th>
                 <th scope="col">행사</th>
-                <th scope="col">일정</th>
+                <th scope="col">위치</th>
                 <th scope="col">정렬순서</th>
                 <th scope="col">노출여부</th>
                 <th scope="col">작성일</th>
@@ -20,7 +20,7 @@
                 <tr>
                     <td><?= $key+1; ?></td>
                     <td><?= $value['title']; ?></td>
-                    <td><?= $value['start_date']; ?> ~ <?= $value['end_date']; ?></td>
+                    <td><?= $value['location']; ?></td>
                     <td><input type="number" id="sort_<?= $value['id']; ?>" class="form-control sort-input" style="width:60px" value="<?= $value['sort']; ?>" data-id="<?= $value['id']; ?>"></td>
                     <td>
                         <div class="form-check form-switch">
@@ -29,7 +29,7 @@
                     </td>
                     <td><?= $value['regdate']; ?></td>
                     <td>
-                        <button onclick="location.href='event/modify?id=<?= $value['id']?>'" class="btn btn-primary btn-sm">수정</button>
+                        <button onclick="location.href='/admin/event/place_modify?id=<?= $value['id']?>'" class="btn btn-primary btn-sm">수정</button>
                         <button onclick="event_delete(<?= $value['id']?>);" class="btn btn-danger btn-sm">삭제</button>
                     </td>
                 </tr>

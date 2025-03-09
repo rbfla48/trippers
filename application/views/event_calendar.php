@@ -467,7 +467,7 @@
 			</div>
 			
 			<img src="assets/img/2025-namhae-map.svg" class="w-100" style="margin: 4% 0; max-width: 540px;">
-			<select class="form-select mx-auto" style="max-width: 450px; width: 80%;">
+			<select class="form-select mx-auto" id="place-select" style="max-width: 450px; width: 80%;">
 				<!-- <option value="all" selected>전체</option> -->
 				<option value="Samdong" selected>삼동면</option>
 				<option value="Sangju">상주면</option>
@@ -491,13 +491,13 @@
 			<!-- 이달의 행사 카드 -->
 			<section class="px-3" style="margin-top: 70px;">
 				<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
-					<?php foreach($events as $list): ?>
+					<section id="place-events-container">
+					<?php foreach($place_events as $list): ?>
 					<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
 						<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
 						<!-- <img src="assets/img/eximg.png" class="card-img-top p-2" alt="..."> -->
 						<div class="card-body text-center px-5 pt-2">
 							<!-- <img src="assets/img/off.svg" style="padding-bottom: 16px;"> -->
-							<img src="assets/img/off.svg" style="padding-bottom: 16px;" class="event-status" data-start="<?= $list['start_date'] ?>" data-end="<?= $list['end_date'] ?>">
 							<h4 class="card-title fw-bold"><?= $list['title'] ?></h5>
 							<p class="card-text"><?= $list['content_sub'] ?></p>
 							<div class="d-flex flex-wrap justify-content-center" style="gap: 6px;">
@@ -511,6 +511,7 @@
 						</div>
 					</div>
 					<?php endforeach ?>
+					</section>
 				</div>
 			</section>
 		</div>
@@ -779,6 +780,58 @@
       }
     });
   });
-</script>
+
+  $(document).ready(function() {
+  $('#place-select').on('change', function(){
+    var selectedPlace = $(this).val();
+
+    console.log("location:"+selectedPlace);
+
+    $.ajax({
+      url: '/event/find_my_palce',
+      type: 'POST',
+      data: { location: selectedPlace },
+      dataType: 'json',
+      success: function(data) {
+
+		console.log("data:"+data);
+
+        var html = '';
+        if (data.length > 0) {
+          $.each(data, function(index, event) {
+            html += '<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href=\'https://visitnamhae.co.kr/event/event_info?id=' + event.id + '\'">';
+            html += '<img src="' + event.thumbnail + '" class="card-img-top p-2" alt="...">';
+            html += '<div class="card-body text-center px-5 pt-2">';
+            html += '<h4 class="card-title fw-bold">' + event.title + '</h4>';
+            html += '<p class="card-text">' + event.content_sub + '</p>';
+            
+            // 태그 처리
+            if (event.tag) {
+              var tags = event.tag.split("#");
+              html += '<div class="d-flex flex-wrap justify-content-center" style="gap: 6px;">';
+              for (var i = 1; i < tags.length; i++) {
+                html += '<span class="badge text-bg-tag fs-6">' + tags[i] + '</span>';
+              }
+              html += '</div>';
+            }
+            
+            html += '</div></div>';
+          });
+        } else {
+          html = '<p>해당 지역에 등록된 이벤트가 없습니다.</p>';
+        }
+        
+        // 기존 카드 영역 업데이트
+        $('#place-events-container').html(html);
+
+		console.log("html:"+html);
+
+      },
+      error: function(xhr, status, error) {
+        console.error('AJAX Error:', error);
+      }
+    });
+  });
+});
 </script>
 </html>

@@ -20,7 +20,7 @@ class Event extends MY_Controller {
         //월 데이터가 없으면 현재월로 조회
         $month = $this->input->get('month') ?? date('m');
         
-        //전체 행사리스트 조회
+        //구석구석남해 행사리스트 조회
         $list = $this->event_mdl->get_events();
 
         //달력 아이콘 표기를 위한 행사날짜 리스트 조회
@@ -43,12 +43,26 @@ class Event extends MY_Controller {
             }
         }
 
+        //마이굿플레이스 행사리스트 조회
+        $place_list = $this->event_mdl->get_place_events();
+
         $data['events'] = $list;
+        $data['place_events'] = $place_list;
         $data['event_dates'] = json_encode($event_dates);//스크립트에서 인식할수 있게 json으로 전달
         $data['event_ranges'] = json_encode($list);
 
 		$this->load->view('event_calendar.php',$data);
 	}
+
+    public function find_my_palce(){
+        $data = array();
+        $location = $this->input->post('location') ?? "Samdong";//마이굿플레이스 위치정보(기본값:삼동면)
+
+        $data = $this->event_mdl->get_place_events($location);
+
+        echo json_encode($data);
+        exit;
+    }
 
     //행사일정 
     public function event_info()

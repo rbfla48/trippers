@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <!-- 검색엔진 사이트정보수집 방지 -->
+    <meta name="robots" content="noindex, nofollow">
     <title>TRIPPERS ADMIN</title>
     
     <!-- Bootstrap 5 CSS -->
@@ -22,6 +24,9 @@
     
     <!-- Summernote JS -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <!-- 카카오 우편번호검색 -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!-- 차트 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -117,11 +122,22 @@ $(document).ready(function () {
                 </a>
             </li>
             <li>
-                <a href="/admin/event" class="nav-link text-white">
+                <a class="nav-link text-white" data-bs-toggle="collapse" href="#eventMenu" role="button" aria-expanded="false" aria-controls="eventMenu">
                     <svg class="bi pe-none me-2" width="16" height="16">
-                        <use xlink:href="event" /></svg>
-                    행사일정 관리
+                    <use xlink:href="event" />
+                    </svg>
+                    행사관리
                 </a>
+                <div class="collapse" id="eventMenu">
+                    <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a href="/admin/event" class="nav-link text-white">구석구석 남해</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/event/place_list" class="nav-link text-white">마이굿플레이스</a>
+                    </li>
+                    </ul>
+                </div>
             </li>
         </ul>
         <hr>

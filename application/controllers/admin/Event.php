@@ -17,7 +17,7 @@ class Event extends CI_Controller {
       $this->list();
 	}
 
-    //행사일정 리스트
+    //구석구석남해 행사일정 리스트
 	public function list()
     {
         $data = array();
@@ -27,14 +27,31 @@ class Event extends CI_Controller {
 		$this->load->view('admin/event_list.php', $data);
     }
 
-    //행사일정 등록화면 이동
+    //마이굿플레이스 행사 리스트
+	public function place_list()
+    {
+        $data = array();
+        $data['list'] = $this->event_mdl->get_place_events();
+        
+        $this->load->view('admin/layout/header.php');
+		$this->load->view('admin/event_place_list.php', $data);
+    }
+
+    //구석구석남해 행사일정 등록화면 이동
 	public function write()	
 	{	
         $this->load->view('admin/layout/header.php');
         $this->load->view('admin/event_write.php');
 	}
 
-    //행사일정 수정화면 이동
+    //마이굿플레이스 행사일정 등록화면 이동
+	public function place_write()	
+	{	
+        $this->load->view('admin/layout/header.php');
+        $this->load->view('admin/event_place_write.php');
+	}
+
+    //구석구석남해 행사일정 수정화면 이동
 	public function modify()	
 	{	
 		$id = $this->input->get('id', TRUE);
@@ -55,6 +72,35 @@ class Event extends CI_Controller {
             
             $this->load->view('admin/layout/header.php');
             $this->load->view('admin/event_modify.php', $data);
+
+		}else{
+			$result['msg'] = "조회된 정보가 없습니다";
+            echo json_encode($result);
+            exit;
+		}
+	}
+
+    //마이굿플레이스 행사일정 수정화면 이동
+	public function place_modify()	
+	{	
+		$id = $this->input->get('id', TRUE);
+
+        $result = array();
+        $data = array();
+
+        if(empty($id))
+        {
+            $result['msg'] = "id가 없습니다";
+            json_encode($result);
+            exit;
+        }
+        
+        $data['info'] = $this->event_mdl->get_event_info($id);
+
+        if (!empty($data)) {
+            
+            $this->load->view('admin/layout/header.php');
+            $this->load->view('admin/event_place_modify.php', $data);
 
 		}else{
 			$result['msg'] = "조회된 정보가 없습니다";
@@ -119,6 +165,9 @@ class Event extends CI_Controller {
             $title = $this->input->post('title', TRUE);
             $start_date = $this->input->post('start_date', TRUE);
             $end_date = $this->input->post('end_date', TRUE);
+            $address = $this->input->post('address', TRUE);
+            $address_detail = $this->input->post('address_detail', TRUE);
+            $location = $this->input->post('location', TRUE);
             $content = $this->input->post('content', FALSE);  // XSS 필터링하지 않음
             $content_sub = $this->input->post('content_sub', FALSE);  // XSS 필터링하지 않음
             $tag = $this->input->post('tag', TRUE);
@@ -231,6 +280,9 @@ class Event extends CI_Controller {
                 'banner_image_pc'       => $banner_image_pc,
                 'start_date'            => $start_date,
                 'end_date'              => $end_date,
+                'address'               => $address,
+                'address_detail'        => $address_detail,
+                'location'              => $location,
                 'thumbnail'             => $thumbnail_file,
                 'content'               => $content,
                 'content_sub'           => $content_sub,

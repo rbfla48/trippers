@@ -180,6 +180,7 @@
     $('#submitBtn').click(function() {
         var formData = new FormData();
         formData.append('id', $('#id').val());
+        formData.append('type', 'N');
         if($('#thumbnail').val()){
             formData.append('thumbnail', $('#thumbnail')[0].files[0]);
         }

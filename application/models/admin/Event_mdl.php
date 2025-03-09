@@ -9,11 +9,25 @@ class Event_mdl extends CI_Model {
         $this->load->database();
     }
 
-    //행사일정 리스트
+    //구석구석남해 행사일정 리스트
     public function get_event_list() 
     {
         $this->db->select('*');
         $this->db->from('tp_monthly_events tme');
+        $this->db->where('type', 'N');
+        $this->db->order_by('tme.id', 'DESC');
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    //마이굿플레이스 행사일정 리스트
+    public function get_place_events() 
+    {
+        $this->db->select('*');
+        $this->db->from('tp_monthly_events tme');
+        $this->db->where('type', 'P');
         $this->db->order_by('tme.id', 'DESC');
 
         $query = $this->db->get();
