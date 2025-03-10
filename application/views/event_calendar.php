@@ -490,8 +490,7 @@
 
 			<!-- 이달의 행사 카드 -->
 			<section class="px-3" style="margin-top: 70px;">
-				<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
-					<section id="place-events-container">
+				<div id="place-events-container" class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
 					<?php foreach($place_events as $list): ?>
 					<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
 						<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
@@ -511,7 +510,6 @@
 						</div>
 					</div>
 					<?php endforeach ?>
-					</section>
 				</div>
 			</section>
 		</div>
@@ -524,7 +522,7 @@
 		<!-- 영상 안내 -->
 		<section class="text-center">
 			<iframe 
-				src="https://www.youtube.com/embed/ZNXknbY4TFM?autoplay=1&mute=1" 
+				src="https://www.youtube.com/embed/ZNXknbY4TFM?autoplay=1&mute=1&loop=1&playlist=ZNXknbY4TFM"
 				title="YouTube video player" 
 				frameborder="0" 
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
