@@ -541,7 +541,7 @@
 			<section id="pc-event-banner" class="swiper mySwiper" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
 				<div class="swiper-pagination"></div>
 				<div class="swiper-wrapper">
-					<div class="swiper-slide pointer">
+					<!-- <div class="swiper-slide pointer">
 						<img src="assets/img/namhae01.svg" class="loading">
 					</div>
 					<div class="swiper-slide pointer">
@@ -549,7 +549,7 @@
 					</div>
 					<div class="swiper-slide pointer">
 						<img src="assets/img/namhae03.svg" class="loading">
-					</div>
+					</div> -->
 					<div class="swiper-slide pointer">
 						<img src="assets/img/namhae04.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
 					</div>
@@ -558,7 +558,7 @@
 			<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
 				<div class="swiper-pagination"></div>
 				<div class="swiper-wrapper">
-					<div class="swiper-slide pointer">
+					<!-- <div class="swiper-slide pointer">
 						<img src="assets/img/namhae-mo01.svg" class="loading">
 					</div>
 					<div class="swiper-slide pointer">
@@ -566,7 +566,7 @@
 					</div>
 					<div class="swiper-slide pointer">
 						<img src="assets/img/namhae-mo03.svg" class="loading">
-					</div>
+					</div> -->
 					<div class="swiper-slide pointer">
 						<img src="assets/img/namhae-mo04.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
 					</div>
