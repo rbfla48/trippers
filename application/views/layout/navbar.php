@@ -361,7 +361,7 @@
       <ul class="site-menu">
         <li><a href="/main" class="text-light text-uppercase">home</a></li>
         <li><a href="/main/archiveTripper" class="text-light text-uppercase">archive</a></li>
-        <li><a href="/main/findTripperGoods" class="text-light text-uppercase">find</a></li>
+        <!-- <li><a href="/main/findTripperGoods" class="text-light text-uppercase">find</a></li> -->
         <li><a href="/main/aboutTripper" class="text-light text-uppercase">about</a></li>
       </ul>
 

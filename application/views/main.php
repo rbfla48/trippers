@@ -337,6 +337,7 @@
 
     <!-- FINDITEM 슬라이드 -->
     <!-- Slider main container -->
+<?php /* FIND 영역 잠시 숨김20250320
     <div class="swiper find-swiper">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
@@ -356,6 +357,7 @@
       <!-- If we need pagination -->
       <div class="swiper-pagination find-pagination"></div>
     </div>
+*/ ?>
 <?php /*
 *FIND ITEM 논의후에 작업후 적용예정
     <div class="find-item-area">

@@ -131,7 +131,7 @@
   <div class="container-fluid">
     <?php include_once("layout/navbar.php")?>
 
-    <div class="container h-100 mt-7">
+    <!-- <div class="container h-100 mt-7">
       <div class="row h-100">
         <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
           <div>
@@ -148,7 +148,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- 글 리스트(ALL)-->
     <div class="container mt-6 w-95" id="article-list-all">
