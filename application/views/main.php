@@ -330,14 +330,15 @@
       <!-- If we need pagination -->
       <div class="swiper-pagination dongnae-pagination"></div>
     </div>
-
+    
+<?php /* FIND 영역 잠시 숨김20250320
     <div class="centered-text-container">
       <div class="centered-text">FIND ITEM</div>
     </div>
 
     <!-- FINDITEM 슬라이드 -->
     <!-- Slider main container -->
-<?php /* FIND 영역 잠시 숨김20250320
+
     <div class="swiper find-swiper">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">

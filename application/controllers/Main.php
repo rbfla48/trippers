@@ -29,9 +29,9 @@ class Main extends MY_Controller {
 			$data['article_dongnae'] = $this->Main_mdl->get_article_list('2','','',4);
 		}else{
 			//상단 크리에이터 글목록
-			$data['article_creator'] = $this->Main_mdl->get_article_list('1');
+			$data['article_creator'] = $this->Main_mdl->get_article_list('1','','',20);
 			//하단 우리동네 글목록
-			$data['article_dongnae'] = $this->Main_mdl->get_article_list('2');
+			$data['article_dongnae'] = $this->Main_mdl->get_article_list('2','','',20);
 		}
 
 		//FIND ITEM 목록
