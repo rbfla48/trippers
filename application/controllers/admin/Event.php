@@ -161,7 +161,8 @@ class Event extends CI_Controller {
         if ($this->input->is_ajax_request()) 
         {
             // POST 데이터 받기
-            $id = $this->input->post('id', FALSE);
+            $id = $this->input->post('id', TRUE);
+            $type = $this->input->post('type', TRUE);
             $title = $this->input->post('title', TRUE);
             $start_date = $this->input->post('start_date', TRUE);
             $end_date = $this->input->post('end_date', TRUE);
@@ -275,6 +276,7 @@ class Event extends CI_Controller {
 
             //데이터베이스에 저장
             $data = array(
+                'type'                  => $type,
                 'title'                 => $title,
                 'banner_image_mobile'   => $banner_image_mobile,
                 'banner_image_pc'       => $banner_image_pc,
