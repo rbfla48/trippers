@@ -798,7 +798,7 @@
         if (data.length > 0) {
           $.each(data, function(index, event) {
             html += '<div class="card border-0 pointer" style="width: 28rem;" onclick="location.href=\'https://visitnamhae.co.kr/event/event_info?id=' + event.id + '\'">';
-            html += '<img src="' + event.thumbnail + '" class="card-img-top p-2" alt="...">';
+            html += '<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">';
             html += '<div class="card-body text-center px-5 pt-2">';
             html += '<h4 class="card-title fw-bold">' + event.title + '</h4>';
             html += '<p class="card-text">' + event.content_sub + '</p>';
