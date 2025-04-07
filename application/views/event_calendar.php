@@ -365,7 +365,7 @@
 			<section class="px-3" style="margin-top: 70px;">
 				<div class="mx-auto d-flex justify-content-center flex-wrap media-gap" style="max-width: 1024px;">
 					<?php foreach($events as $list): ?>
-					<div class="card border-0 pointer event-card" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">
+					<div class="card border-0 pointer event-card" style="width: 28rem;" onclick="location.href='<?="https://visitnamhae.co.kr/event/event_info?id=".$list['id']?>'">		
 						<img src="<?= get_event_upload_path() . $list['thumbnail']; ?>" class="card-img-top p-2" alt="...">
 						<!-- <img src="assets/img/eximg.png" class="card-img-top p-2" alt="..."> -->
 						<div class="card-body text-center px-5 pt-2">
@@ -707,15 +707,17 @@
 							var startMonth = parseInt(startDate.split('-')[1], 10);
 							var endMonth = parseInt(endDate.split('-')[1], 10);
 
-							// 시작월 또는 종료월 중 하나라도 현재 달과 같다면
-							if (currentMonth == startMonth || currentMonth == endMonth) {
-								card.style.display = "inline"; // 또는 "inline" 등 원하는 display 값
+							//현재 월이 컨텐츠의 기간에 포함되는지 확인
+							var currentMonthNum = parseInt(currentMonth, 10); // 현재 월 숫자 (1~12)
+							if (currentMonthNum >= startMonth && currentMonthNum <= endMonth) {
+								card.style.display = "inline";
 							} else {
 								card.style.display = "none";
 							}
 						}
 					});
-					
+					// 상태 업데이트 후 재정렬 호출
+  					reorderEventCards();			
 				}
 
 			}
@@ -831,5 +833,27 @@
     });
   });
 });
+
+//on이미지가 노출되는 카드부터 노출되도록 재정렬
+function reorderEventCards() {
+  // 이벤트 카드들이 들어있는 컨테이너 선택
+  const container = document.querySelector('.media-gap');
+  // 컨테이너 내의 모든 이벤트 카드 요소를 배열로 변환
+  const cards = Array.from(container.querySelectorAll('.event-card'));
+
+  // 각 카드 내의 event-status 이미지의 src를 확인하여 on인지 off인지 판단한 후 정렬
+  cards.sort((a, b) => {
+    const imgA = a.querySelector('.event-status');
+    const imgB = b.querySelector('.event-status');
+    // on이면 우선 순위를 0, off이면 1
+    const isOnA = imgA.src.includes('on.svg') ? 0 : 1;
+    const isOnB = imgB.src.includes('on.svg') ? 0 : 1;
+    return isOnA - isOnB;
+  });
+
+  // 기존의 카드들을 모두 제거하고 정렬된 순서대로 다시 추가
+  container.innerHTML = '';
+  cards.forEach(card => container.appendChild(card));
+}
 </script>
 </html>

@@ -20,6 +20,7 @@ class Event_mdl extends CI_Model {
 //        $this->db->group_end();
         $this->db->where('use_yn', 'Y');
         $this->db->where('type', 'N');
+        $this->db->order_by('start_date', 'ASC');
         $this->db->order_by('sort', 'ASC');
 
         $query = $this->db->get();
@@ -58,6 +59,7 @@ class Event_mdl extends CI_Model {
             }
             $this->db->where('location', $location_name);
         }
+        $this->db->order_by('start_date', 'ASC');
         $this->db->order_by('sort', 'ASC');
 
         $query = $this->db->get();

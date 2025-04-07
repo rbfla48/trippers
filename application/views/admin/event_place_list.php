@@ -54,7 +54,7 @@ $(document).ready(function() {
         var sortValue = $(this).val();
 
         $.ajax({
-            url: 'event/update_sort',
+            url: '/admin/event/update_sort',
             type: 'POST',
             data: {
                 id: id,
@@ -75,7 +75,7 @@ $(document).ready(function() {
         var useYnValue = $(this).is(':checked') ? 'Y' : 'N';
 
         $.ajax({
-            url: 'event/update_use_yn',
+            url: '/admin/event/update_use_yn',
             type: 'POST',
             data: {
                 id: id,

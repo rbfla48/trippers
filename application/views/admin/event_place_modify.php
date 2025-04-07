@@ -218,7 +218,7 @@
             success: function(response) {
                 var result = JSON.parse(response)
                 alert(result.msg);
-                window.location.href = '/admin/event';
+                window.location.href = '/admin/event/place_list';
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);

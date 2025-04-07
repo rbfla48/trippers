@@ -1,5 +1,5 @@
 <div class="col-md-9 ms-sm-auto col-lg-10 p-md-4">
-    <h5>마이굿플레이스 행사일정 관리 > 행사등록록</h5>
+    <h5>마이굿플레이스 행사일정 관리 > 행사등록</h5>
     <hr/>
     <br/>
     <form method="post" id="eventForm">
@@ -194,7 +194,7 @@
             success: function(response) {
                 var result = JSON.parse(response)
                 alert(result.msg);
-                window.location.href = '/admin/event';
+                window.location.href = '/admin/event/place_list';
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
