@@ -667,6 +667,7 @@
 				
 				// 각 행사 카드의 on/off이미지 변경 처리 추가
 				updateEventStasus(clickedDate);
+				reorderEventCards();
 			},
 			selectable: true, // 드래그로 날짜 선택 가능
 			droppable: true,  // 드래그 가능
@@ -847,14 +848,43 @@ function reorderEventCards() {
   // 컨테이너 내의 모든 이벤트 카드 요소를 배열로 변환
   const cards = Array.from(container.querySelectorAll('.event-card'));
 
-  // 각 카드 내의 event-status 이미지의 src를 확인하여 on인지 off인지 판단한 후 정렬
+  // 선택된 날짜
+  const selectedDate = new Date("<?= date("Y-m-d") ?>");
+
+  // 카드들을 정렬
   cards.sort((a, b) => {
     const imgA = a.querySelector('.event-status');
     const imgB = b.querySelector('.event-status');
-    // on이면 우선 순위를 0, off이면 1
-    const isOnA = imgA.src.includes('on.svg') ? 0 : 1;
-    const isOnB = imgB.src.includes('on.svg') ? 0 : 1;
-    return isOnA - isOnB;
+
+    // 카드 A와 B의 시작일 및 종료일을 가져오기
+    const startDateA = new Date(imgA.getAttribute('data-start'));
+    const endDateA = new Date(imgA.getAttribute('data-end'));
+    const startDateB = new Date(imgB.getAttribute('data-start'));
+    const endDateB = new Date(imgB.getAttribute('data-end'));
+
+    // 'on' 이미지를 우선순위로 설정
+    const isOnA = imgA.src.includes('on.svg');
+    const isOnB = imgB.src.includes('on.svg');
+
+    // 'on' 이미지를 가진 카드들이 먼저 나오도록 우선 순위 지정
+    if (isOnA && !isOnB) return -1; // A가 'on'이면 A가 먼저
+    if (!isOnA && isOnB) return 1;  // B가 'on'이면 B가 먼저
+
+    // 'on' 이미지를 가진 카드들 중에서 가장 가까운 날짜를 우선순위로 처리
+    if (isOnA && isOnB) {
+      const diffA = Math.abs(selectedDate - startDateA);
+      const diffB = Math.abs(selectedDate - startDateB);
+      return diffA - diffB; // 가장 가까운 날짜가 먼저
+    }
+
+    // 'off' 이미지를 가진 카드들 중에서 가장 가까운 날짜를 우선순위로 처리
+    if (!isOnA && !isOnB) {
+      const diffA = Math.abs(selectedDate - startDateA);
+      const diffB = Math.abs(selectedDate - startDateB);
+      return diffA - diffB; // 가장 가까운 날짜가 먼저
+    }
+
+    return 0; // 기본적으로 변경하지 않음
   });
 
   // 기존의 카드들을 모두 제거하고 정렬된 순서대로 다시 추가
