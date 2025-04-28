@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visitnamhae</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="고향사랑방문의해 남해군 행사 및 마이굿플레이스, 구석구석남해 소식을 소개합니다">
+	<meta property="og:type" content="website"> 
+	<meta property="og:title" content="구석구석남해, 마이굿플레이스">
+	<meta property="og:description" content="2025 고향사랑 방문의 해, 국민고향 남해로 오시다">
+	<meta property="og:image" content="https://visitnamhae.co.kr/assets/img/logo.svg">
+	<meta property="og:url" content="https://visitnamhae.co.kr">
+  	<title>Visitnamhae</title>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" ></script> -->
