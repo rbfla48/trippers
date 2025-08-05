@@ -588,9 +588,6 @@
 						<img src="assets/img/namhae04.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
 					</div>
 				</div>
-				<div class="w-100 text-center" style="margin-top: 5%;">
-					<img src="assets/img/shortcut.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
-				</div>
 			</section>
 			<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
 				<div class="swiper-pagination"></div>
