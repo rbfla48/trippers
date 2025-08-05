@@ -450,11 +450,19 @@
 			<a href="https://www.namhaetour.org/main.web" target="_blank" class="text-dark text-decoration-none">남해관광문화재단</a> |
 			<a href="https://namhaeon.com/namhaeroOn/main" target="_blank" class="text-dark text-decoration-none">남해로ON</a>
 		</h2>
-		<h4 class="card-title fw-bold text-center mo-a-link" style="display: flex; flex-direction: column;">
-			<a href="https://www.namhae.go.kr/tour/01015/01036.web" target="_blank" class="text-dark text-decoration-none my-2">국민고향 남해</a>
-			<a href="https://www.namhae.go.kr/tour/main.web" target="_blank" class="text-dark text-decoration-none my-2">남해문화관광</a>
-			<a href="https://www.namhaetour.org/main.web" target="_blank" class="text-dark text-decoration-none my-2">남해관광문화재단</a>
-			<a href="https://namhaeon.com/namhaeroOn/main" target="_blank" class="text-dark text-decoration-none my-2">남해로ON</a>
+		<h4 class="card-title fw-bold text-center mo-a-link">
+			<div class="my-3">
+				<a href="https://www.namhae.go.kr/tour/01015/01036.web" target="_blank" class="text-dark text-decoration-none">국민고향 남해</a>
+			</div>
+			<div class="my-3">
+				<a href="https://www.namhae.go.kr/tour/main.web" target="_blank" class="text-dark text-decoration-none">남해문화관광</a>
+			</div>
+			<div class="my-3">
+				<a href="https://www.namhaetour.org/main.web" target="_blank" class="text-dark text-decoration-none">남해관광문화재단</a>
+			</div>
+			<div class="my-3">
+				<a href="https://namhaeon.com/namhaeroOn/main" target="_blank" class="text-dark text-decoration-none">남해로ON</a>
+			</div>
 		</h4>
 	</div>
 
