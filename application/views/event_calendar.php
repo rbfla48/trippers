@@ -609,7 +609,7 @@
 
 			<!-- 바로가기 -->
 			<section class="text-center" style="margin-top: 3%;">
-				<img src="assets/img/shortcut.svg" class="event-size" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
+				<img src="assets/img/shortcut-mygood.svg" class="event-size" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
 			</section>
 		</div>
 		<h2 class="card-title fw-bold text-center pc-a-link">
