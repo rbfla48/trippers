@@ -196,10 +196,12 @@
 		.custom-check-icon{
 			width: 26px !important;
 		}
-		#pc-event-banner{
+		#pc-event-banner,
+		.pc-a-link{
 			display: none !important;
 		}
-		#mo-event-banner{
+		#mo-event-banner,
+		.mo-a-link{
 			display: block !important;
 		}
 		.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
@@ -309,10 +311,12 @@
     background-color: #F0F0F0;
     border: 1px solid #c7c7c7;
 	}
-	#pc-event-banner{
+	#pc-event-banner,
+	.pc-a-link{
 		display: block;
 	}
-	#mo-event-banner{
+	#mo-event-banner,
+	.mo-a-link{
 		display: none;
 	}
 
@@ -435,7 +439,23 @@
 					</div>
 				</div>
 			</section>
+			<!-- 바로가기 -->
+			<section class="text-center" style="margin-top: 3%;">
+				<img src="assets/img/shortcut.svg" class="event-size" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
+			</section>
 		</div>
+		<h2 class="card-title fw-bold text-center pc-a-link">
+			<a href="https://www.namhae.go.kr/tour/01015/01036.web" target="_blank" class="text-dark text-decoration-none">국민고향 남해</a> |
+			<a href="https://www.namhae.go.kr/tour/main.web" target="_blank" class="text-dark text-decoration-none">남해문화관광</a> |
+			<a href="https://www.namhaetour.org/main.web" target="_blank" class="text-dark text-decoration-none">남해관광문화재단</a> |
+			<a href="https://namhaeon.com/namhaeroOn/main" target="_blank" class="text-dark text-decoration-none">남해로ON</a>
+		</h2>
+		<h4 class="card-title fw-bold text-center mo-a-link" style="display: flex; flex-direction: column;">
+			<a href="https://www.namhae.go.kr/tour/01015/01036.web" target="_blank" class="text-dark text-decoration-none my-2">국민고향 남해</a>
+			<a href="https://www.namhae.go.kr/tour/main.web" target="_blank" class="text-dark text-decoration-none my-2">남해문화관광</a>
+			<a href="https://www.namhaetour.org/main.web" target="_blank" class="text-dark text-decoration-none my-2">남해관광문화재단</a>
+			<a href="https://namhaeon.com/namhaeroOn/main" target="_blank" class="text-dark text-decoration-none my-2">남해로ON</a>
+		</h4>
 	</div>
 
 
@@ -560,7 +580,9 @@
 						<img src="assets/img/namhae04.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
 					</div>
 				</div>
-				<img src="assets/img/shortcut.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
+				<div class="w-100 text-center" style="margin-top: 5%;">
+					<img src="assets/img/shortcut.svg" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
+				</div>
 			</section>
 			<section id="mo-event-banner" class="swiper mySwiper media-mt-0 px-4" style="max-width: 1420px; padding: 40px 0; margin-top: 5%;">
 				<div class="swiper-pagination"></div>
@@ -579,8 +601,24 @@
 					</div>
 				</div>
 			</section>
-		</div>
 
+			<!-- 바로가기 -->
+			<section class="text-center" style="margin-top: 3%;">
+				<img src="assets/img/shortcut.svg" class="event-size" onclick="window.open('https://walla.my/survey/y94fnZEQgIZuabehogjq')">
+			</section>
+		</div>
+		<h2 class="card-title fw-bold text-center pc-a-link">
+			<a href="https://www.namhae.go.kr/tour/01015/01036.web" target="_blank" class="text-dark text-decoration-none">국민고향 남해</a> |
+			<a href="https://www.namhae.go.kr/tour/main.web" target="_blank" class="text-dark text-decoration-none">남해문화관광</a> |
+			<a href="https://www.namhaetour.org/main.web" target="_blank" class="text-dark text-decoration-none">남해관광문화재단</a> |
+			<a href="https://namhaeon.com/namhaeroOn/main" target="_blank" class="text-dark text-decoration-none">남해로ON</a>
+		</h2>
+		<h4 class="card-title fw-bold text-center mo-a-link" style="display: flex; flex-direction: column;">
+			<a href="https://www.namhae.go.kr/tour/01015/01036.web" target="_blank" class="text-dark text-decoration-none my-2">국민고향 남해</a>
+			<a href="https://www.namhae.go.kr/tour/main.web" target="_blank" class="text-dark text-decoration-none my-2">남해문화관광</a>
+			<a href="https://www.namhaetour.org/main.web" target="_blank" class="text-dark text-decoration-none my-2">남해관광문화재단</a>
+			<a href="https://namhaeon.com/namhaeroOn/main" target="_blank" class="text-dark text-decoration-none my-2">남해로ON</a>
+		</h4>
 		<!-- <div class="text-center" style="margin-bottom: 50px;">
 			<p class="fs-1" style="font-weight: 100;"><b class="fw-bold" style="color:#5ed1ff">서비스 준비중</b>입니다.</p>
 			<p class="mb-0">이용에 불편을 드려 죄송합니다.</p>
