@@ -327,6 +327,19 @@
 	}
 </style>
 <body>
+	<div class="popup-container" style="position: sticky;z-index: 10;top: 0;">
+		<div class="card p-0" style="position: absolute; width: 450px; max-width: 100%; left: 50%; transform: translateX(-50%);">
+			<p class="card-text m-0">
+				<a href="https://www.nhokto.com/">
+					<img src="https://www.foodnews.news/data/photos/portnews/202509/20250901082315-67330.jpg" class="card-img-top popup-img" alt="">
+				</a>
+			</p>
+			<div class="d-flex justify-content-between align-items-center">
+				<div type="button" class="btn btn-dark popup-today w-50" onclick="window.open('https://www.nhokto.com/', '_blank')" style="border-radius: 0; line-height: 46px;">자세히 보기</div>
+				<div type="button" class="btn btn-dark close-button popup-close w-50" style="border-radius: 0; line-height: 46px;" onclick="hidePopupFor24Hours()">다시보지 않기</div>
+			</div>
+		</div>
+	</div>
 	<!-- 공통헤더 -->
 	<!-- <section id="header"></section> -->
 	<?php include("common/header.php")?>
@@ -338,7 +351,7 @@
 		</section>
 
 		<!-- 타이틀 -->
-		<section class="text-center" style="padding: 70px; 0 100px 0">
+		<section class="text-center" style="padding: 70px 0 100px 0;">
 			<img src="assets/img/title.svg" class="title-size">
 		</section>
 
@@ -645,6 +658,25 @@
 </body>
 
 <script>
+// 24시간 팝업 숨김 함수
+function hidePopupFor24Hours() {
+	var now = new Date().getTime();
+	localStorage.setItem('hidePopupUntil', now + 24 * 60 * 60 * 1000);
+	document.querySelector('.popup-container').style.display = 'none';
+}
+
+// 페이지 로드 시 팝업 노출 여부 체크
+document.addEventListener('DOMContentLoaded', function () {
+	var hideUntil = localStorage.getItem('hidePopupUntil');
+	var now = new Date().getTime();
+	if (hideUntil && now < hideUntil) {
+		var popup = document.querySelector('.popup-container');
+		if (popup) popup.style.display = 'none';
+	}
+});
+
+
+
 	//달력 아이콘노출날짜 리스트
 	var eventDays = JSON.parse('<?= $event_dates ?>');
 
