@@ -177,7 +177,15 @@
 	.media-gap{
 		gap: 100px;
 	}
+	.popup-container{
+		right: 5%;
+    margin-top: 7%;
+	}
 	@media (max-width: 768px) {
+		.container{
+			right: auto;
+			margin-top: auto;
+		}
 		.fc-prev-button{
 			background-image: url(assets/img/month-left-m.svg);
 			top: 0px;
@@ -327,11 +335,14 @@
 	}
 </style>
 <body>
-	<div class="popup-container" style="position: sticky;z-index: 10;top: 0;">
-		<div class="card p-0" style="position: absolute; width: 450px; max-width: 100%; left: 50%; transform: translateX(-50%);">
+	<div class="" style="position: sticky;z-index: 10;top: 0;">
+		<div class="card p-0 popup-container" style="position: absolute; width: 450px; max-width: 100%;">
 			<p class="card-text m-0">
+				<div class="bg-black" data-bs-theme="dark" style="position: absolute; border-radius: 50%; padding: 10px; right: 16px; top: 32px;">
+					<button type="button" class="btn-close" aria-label="Close" onclick="closePopup()"></button>
+				</div>
 				<a href="https://www.nhokto.com/">
-					<img src="https://www.foodnews.news/data/photos/portnews/202509/20250901082315-67330.jpg" class="card-img-top popup-img" alt="">
+					<img src="assets/img/namhae_popup.png" class="card-img-top popup-img" alt="">
 				</a>
 			</p>
 			<div class="d-flex justify-content-between align-items-center">
@@ -663,6 +674,12 @@ function hidePopupFor24Hours() {
 	var now = new Date().getTime();
 	localStorage.setItem('hidePopupUntil', now + 24 * 60 * 60 * 1000);
 	document.querySelector('.popup-container').style.display = 'none';
+}
+
+// 즉시 팝업 닫기 함수
+function closePopup() {
+	var popup = document.querySelector('.popup-container');
+	if (popup) popup.style.display = 'none';
 }
 
 // 페이지 로드 시 팝업 노출 여부 체크
