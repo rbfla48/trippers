@@ -182,7 +182,7 @@
     margin-top: 7%;
 	}
 	@media (max-width: 768px) {
-		.container{
+		.popup-container{
 			right: auto;
 			margin-top: auto;
 		}
