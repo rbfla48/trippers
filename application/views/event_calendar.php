@@ -337,14 +337,12 @@
 <body>
 	<div class="" style="position: sticky;z-index: 10;top: 0;">
 		<div class="card p-0 popup-container" style="position: absolute; width: 450px; max-width: 100%;">
-			<p class="card-text m-0">
-				<div class="bg-black" data-bs-theme="dark" style="position: absolute; border-radius: 50%; padding: 10px; right: 16px; top: 32px;">
-					<button type="button" class="btn-close" aria-label="Close" onclick="closePopup()"></button>
-				</div>
-				<a href="https://www.nhokto.com/">
-					<img src="assets/img/namhae_popup.png" class="card-img-top popup-img" alt="">
-				</a>
-			</p>
+			<div class="bg-black" data-bs-theme="dark" style="position: absolute; border-radius: 50%; padding: 10px; right: 16px; top: 32px;">
+				<button type="button" class="btn-close" aria-label="Close" onclick="closePopup()"></button>
+			</div>
+			<a href="https://www.nhokto.com/">
+				<img src="assets/img/namhae_popup.png" class="card-img-top popup-img" alt="">
+			</a>
 			<div class="d-flex justify-content-between align-items-center">
 				<div type="button" class="btn btn-dark popup-today w-50" onclick="window.open('https://www.nhokto.com/', '_blank')" style="border-radius: 0; line-height: 46px;">자세히 보기</div>
 				<div type="button" class="btn btn-dark close-button popup-close w-50" style="border-radius: 0; line-height: 46px;" onclick="hidePopupFor24Hours()">다시보지 않기</div>
