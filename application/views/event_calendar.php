@@ -335,7 +335,7 @@
 	}
 </style>
 <body>
-	<div class="" style="position: sticky;z-index: 10;top: 0;">
+	<!-- <div class="" style="position: sticky;z-index: 10;top: 0;">
 		<div class="card p-0 popup-container" style="position: absolute; width: 450px; max-width: 100%;">
 			<div class="bg-black" data-bs-theme="dark" style="position: absolute; border-radius: 50%; padding: 10px; right: 16px; top: 32px;">
 				<button type="button" class="btn-close" aria-label="Close" onclick="closePopup()"></button>
@@ -348,7 +348,7 @@
 				<div type="button" class="btn btn-dark close-button popup-close w-50" style="border-radius: 0; line-height: 46px;" onclick="hidePopupFor24Hours()">다시보지 않기</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- 공통헤더 -->
 	<!-- <section id="header"></section> -->
 	<?php include("common/header.php")?>
